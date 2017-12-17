@@ -37,6 +37,11 @@ public class HomePage extends javax.swing.JFrame {
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -105,6 +110,11 @@ public class HomePage extends javax.swing.JFrame {
         s.setVisible(true);
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        new UserSelection().setVisible(true);
+       
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -150,8 +160,8 @@ public class HomePage extends javax.swing.JFrame {
     private void initiaDetail() {
         setLocationRelativeTo(null);
         setTitle("Home Page");
-        AddDeliveryManDa da = new AddDeliveryManDa();
-        d = da.getDeliveryMan();
-        da.shutDown();
+//        AddDeliveryManDa da = new AddDeliveryManDa();
+//        d = da.getDeliveryMan();
+//        da.shutDown();
     }
 }
