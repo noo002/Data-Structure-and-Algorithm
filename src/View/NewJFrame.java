@@ -1,7 +1,7 @@
 package View;
 
 
-import Model.Food;
+import Model.food;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -19,7 +19,7 @@ import javax.swing.table.TableModel;
  */
 public class NewJFrame extends javax.swing.JFrame {
     
-     List<Food> menuItem = new ArrayList<>();
+     List<food> menuItem = new ArrayList<>();
 
     
     public NewJFrame() {
@@ -31,18 +31,18 @@ public class NewJFrame extends javax.swing.JFrame {
 
     public void populateTable(){
     // This function to insert data into table first
-    Food menu = new Food("Chicken Chop",15,0);
-    Food menu1 = new Food("Fish Chop",15,0);
-    Food menu2 = new Food("Pork Chop",15,0);
+    food menu = new food("Chicken Chop",15,0);
+    food menu1 = new food("Fish Chop",15,0);
+    food menu2 = new food("Pork Chop",15,0);
     menuItem.add(menu);
     menuItem.add(menu1);
     menuItem.add(menu2);
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     Object rowData[] = new Object[3];
     for(int i=0;i<menuItem.size();i++){
-        rowData[0] = menuItem.get(i).getfoodName();
-        rowData[1] = menuItem.get(i).getprice();
-        rowData[2] = menuItem.get(i).getquantity();
+        rowData[0] = menuItem.get(i).getFoodName();
+        rowData[1] = menuItem.get(i).getPrice();
+        rowData[2] = menuItem.get(i).getQuantity();
         
         model.addRow(rowData);
     }

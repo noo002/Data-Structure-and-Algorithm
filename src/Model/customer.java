@@ -12,6 +12,18 @@ package Model;
 public class customer {
     
     private String customerId,address,contactNo,icNo,email,name;
+    
+    public customer(String customerId,String name, String ICNo, String ContactNo,String email, String Address ) {
+        this.customerId = customerId;
+        this.name = name;
+        this.icNo =  ICNo; 
+        this.contactNo = ContactNo;
+       this.email = email; 
+        this.address = Address;
+        
+    }
+
+    
 
     public String getCustomerId() {
         return customerId;
@@ -61,4 +73,8 @@ public class customer {
         this.name = name;
     }
     
+    @Override
+     public String toString(){
+        return String.format("ID : %s \n Name : %s \n IC no : %s \n Contact No: %s \n Email: %s \n Address: %s \n",customerId,name,icNo,contactNo,email,address);
+    }
 }

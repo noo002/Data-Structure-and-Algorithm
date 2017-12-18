@@ -1,8 +1,9 @@
 package View;
 
 
-
-import Model.Food;
+import Control.LinkedQueue;
+import Control.QueueInterface;
+import Model.food;
 import Model.order;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -20,7 +21,7 @@ public class PlaceOrder extends javax.swing.JFrame {
      
     
     QueueInterface<order> myQueue = new LinkedQueue<>(); 
-     List<Food> menuItem = new ArrayList<>();
+     List<food> menuItem = new ArrayList<>();
     
      
     
@@ -222,7 +223,7 @@ public class PlaceOrder extends javax.swing.JFrame {
         
         myQueue.IncreaseorderId();
         
-        order o = new order(orderId, orderDate, orderTime, totalAmount);
+        order o = new order( orderId, orderDate, orderTime, totalAmount);
         Home.myQueue.enqueue(o);
         
         JOptionPane.showMessageDialog(null,"You have successful make your order :D ");

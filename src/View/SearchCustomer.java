@@ -1,6 +1,6 @@
 package View;
 
-import Model.Customer; 
+import Model.customer; 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -10,7 +10,7 @@ import javax.swing.table.TableRowSorter;
 
 public class SearchCustomer extends javax.swing.JFrame {
 
-   List<Customer> customer = new ArrayList<>();
+   List<customer> customer = new ArrayList<>();
     public SearchCustomer() {
         initComponents();
         setTitle("Search Customer");
@@ -43,6 +43,10 @@ public class SearchCustomer extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,15 +80,22 @@ public class SearchCustomer extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "IC NO", "Phone No", "Address"
+                "Customer ID", "Name", "IC NO", "Phone No", "Email", "Address"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -106,47 +117,60 @@ public class SearchCustomer extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane3.setViewportView(jTextArea1);
 
+        jLabel7.setText("Email");
+
+        jLabel8.setText("ID");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addGap(80, 80, 80))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(63, 63, 63)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)))
+                        .addGap(80, 80, 80))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3)))
-                .addContainerGap(74, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel5)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                                .addComponent(jLabel4)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7)
+                                .addComponent(jTextField5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -164,12 +188,17 @@ public class SearchCustomer extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addGap(28, 28, 28)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
@@ -188,11 +217,14 @@ public class SearchCustomer extends javax.swing.JFrame {
       //   customer.clear();
         int selectedRow = jTable2.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-
-        jTextField2.setText(model.getValueAt(selectedRow, 0).toString());
-        jTextField3.setText(model.getValueAt(selectedRow,1).toString());
-        jTextField4.setText(model.getValueAt(selectedRow,2).toString());
-        jTextArea1.setText(model.getValueAt(selectedRow,3).toString());
+        
+        jTextField6.setText(model.getValueAt(selectedRow, 0).toString());
+        jTextField2.setText(model.getValueAt(selectedRow,1).toString());
+        jTextField3.setText(model.getValueAt(selectedRow,2).toString());
+        jTextField4.setText(model.getValueAt(selectedRow,3).toString());
+         jTextField5.setText(model.getValueAt(selectedRow,4).toString());
+        jTextArea1.setText(model.getValueAt(selectedRow,5).toString());
+        
         
         
         
@@ -201,24 +233,22 @@ public class SearchCustomer extends javax.swing.JFrame {
 
    public void populateTable(){
     // This function to insert data into table first
-    Customer cust1 = new Customer("Leong ","950330-14-2569","017-6762311","123,Jalan GK ,53300 KL");
-    Customer cust2 = new Customer("Wee","965520-14-2558","017-3456789","124,Jalan lol, 53300 KL");
-    Customer cust3 = new Customer("AAA","970828-14-3635","011-12345678","555,blok A,Jalan LL, 53300 KL");
-    Customer cust4 = new Customer("BBB","971212-14-6666","017-8888999","888,blok C,Jalan LWL, 53300 KL");
-    Customer cust5 = new Customer("CCC","965520-14-2558","017-3456789","124,Jalan lol, 53300 KL");
-    
+    customer cust1 = new customer("C001","Leong ","950330-14-2569","017-6762311","leong@gmail.com","123,Jalan GK ,53300 KL");
+    customer cust2 = new customer("C002","AAA ","951221-14-7889","012-3456789","AAA@gmail.com","123,Jalan K ,53300 KL");
+    customer cust3 = new customer("C003","BBB ","020330-14-1234","019-8765432","BBB@gmail.com","3-2, blok b, Taman LOL, 53300 KL");
     customer.add(cust1); 
     customer.add(cust2);
     customer.add(cust3);
-    customer.add(cust4);
-    customer.add(cust5);
+    
     DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-    Object rowData[] = new Object[4];
+    Object rowData[] = new Object[6];
     for(int i=0;i<customer.size();i++){
-        rowData[0] = customer.get(i).getname();
-        rowData[1] = customer.get(i).getICNo();
-        rowData[2] = customer.get(i).getphoneNo();
-        rowData[3] = customer.get(i).getHomeAddress();
+        rowData[0] = customer.get(i).getCustomerId();
+        rowData[1] = customer.get(i).getName();
+        rowData[2] = customer.get(i).getIcNo();
+        rowData[3] = customer.get(i).getContactNo();
+        rowData[4] = customer.get(i).getEmail();
+        rowData[5] = customer.get(i).getAddress();
         model.addRow(rowData);
     }
     customer.clear();
@@ -232,7 +262,7 @@ public class SearchCustomer extends javax.swing.JFrame {
            if (PhoneNo.trim().length() == 0) {
                     filter.setRowFilter(null);
                 } else {
-               int columnIndex = 2;
+               int columnIndex = 3;
               // int columnIndex = jTable1.convertColumnIndexToModel(viewColumn);
                     filter.setRowFilter(RowFilter.regexFilter("(?i)" + PhoneNo,columnIndex));
                 }
@@ -260,6 +290,8 @@ public class SearchCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -270,5 +302,7 @@ public class SearchCustomer extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }

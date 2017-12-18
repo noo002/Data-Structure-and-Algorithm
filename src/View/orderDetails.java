@@ -3,6 +3,8 @@ package View;
 
 import Model.order;
 import javax.swing.table.DefaultTableModel;
+import Control.LinkedQueue;
+import Control.QueueInterface;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -137,9 +139,6 @@ public class orderDetails extends javax.swing.JFrame {
          this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

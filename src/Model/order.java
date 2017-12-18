@@ -13,6 +13,13 @@ public class order {
     
     private String orderId,orderDate,orderTime,customerId;
     private double totalAmount;
+    
+    public order(String orderId, String orderDate, String orderTime,double totalAmount){
+        this.orderId = orderId; 
+        this.orderDate = orderDate;
+        this.orderTime = orderTime;
+        this.totalAmount = totalAmount;
+    }
 
     public String getOrderId() {
         return orderId;

@@ -1,7 +1,9 @@
 package View;
 
 
-import Model.Food;
+import Control.LinkedQueue;
+import Control.QueueInterface;
+import Model.food;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -19,7 +21,7 @@ import javax.swing.table.TableModel;
  */
 public class MIDFastfood extends javax.swing.JFrame {
 
-    List<Food> menuItem = new ArrayList<>();
+    List<food> menuItem = new ArrayList<>();
     
     public MIDFastfood() {
         initComponents();
@@ -28,10 +30,10 @@ public class MIDFastfood extends javax.swing.JFrame {
     
      public void populateTable(){
     // This function to insert data into table first
-    Food menu = new Food("MidBurget Set",10,0);
-    Food menu1 = new Food("Fish Burger Set",9,0);
-    Food menu2 = new Food("Beef Burger Set",10,0);
-    Food menu3 = new Food("Fried Chicken Set",10,0);
+    food menu = new food("MidBurget Set",10,0);
+    food menu1 = new food("Fish Burger Set",9,0);
+    food menu2 = new food("Beef Burger Set",10,0);
+    food menu3 = new food("Fried Chicken Set",10,0);
     menuItem.add(menu);
     menuItem.add(menu1);
     menuItem.add(menu2);
@@ -39,9 +41,9 @@ public class MIDFastfood extends javax.swing.JFrame {
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     Object rowData[] = new Object[3];
     for(int i=0;i<menuItem.size();i++){
-        rowData[0] = menuItem.get(i).getfoodName();
-        rowData[1] = menuItem.get(i).getprice();
-        rowData[2] = menuItem.get(i).getquantity();
+        rowData[0] = menuItem.get(i).getFoodName();
+        rowData[1] = menuItem.get(i).getPrice();
+        rowData[2] = menuItem.get(i).getQuantity();
         
         model.addRow(rowData);
     }

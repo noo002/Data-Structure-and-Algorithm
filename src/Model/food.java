@@ -11,8 +11,34 @@ package Model;
  */
 public class food {
     
-    private String foodId,menuId,description;
-    private double price;
+    private String foodId,menuId,description,foodName;
+    private double price,quantity;
+
+    public food(String foodName, double price, int quantity){
+       
+       this.foodName= foodName;
+       this.price=price;
+       this.quantity = quantity; 
+    }
+    
+    
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+    
+    
 
     public String getFoodId() {
         return foodId;
