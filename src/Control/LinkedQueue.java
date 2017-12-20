@@ -36,21 +36,25 @@ int count =0;
   public void enqueue(T newEntry) {
     Node newNode = new Node(newEntry, null);
 
-    if (isEmpty()) {
-        newNode.setNodeContent(newEntry);
-        firstNode = newNode;
-       count++;
-    } else {
-       
-       
-      lastNode.next = newNode;
-      count++;
-    }
+    if(firstNode == null)
+        {
+            
+            newNode.setNodeContent(newEntry);
+            firstNode = newNode;
+            lastNode = newNode;
+            count++;
+        }
+        else
+        {
+           
+            newNode.setNodeContent(newEntry);
+            
+            lastNode.next = newNode;
+            count++;
+        }  // end enqueue
 
-    lastNode = newNode;
-        count++;
-  } // end enqueue
-
+  }
+  
   public T getFront() {
     T front = null;
 
@@ -92,17 +96,18 @@ int count =0;
       {
           Node newNode = firstNode;
           order o;
-          Object[][] temp = new Object[count][];
+          Object[][] temp = new Object[count][5];
           if(firstNode != null)
           {
           
           for(int i = 0; i<count; i++)
           {
            o = (order)newNode.getNodeContent();
-           temp[i][0]=o.getOrderId();
-           temp[i][1]=o.getOrderDate();
-           temp[i][2]=o.getOrderTime();
-           temp[i][3]=o.getTotalAmount();
+           temp[i][0]=o.getCustomerId();
+           temp[i][1]=o.getOrderId();
+           temp[i][2]=o.getOrderDate();
+           temp[i][3]=o.getOrderTime();
+           temp[i][4]=o.getTotalAmount();
           
           // return 1(T)f;
                 newNode = newNode.next;

@@ -1,7 +1,11 @@
 package View;
 
 
+import Model.customer;
 import java.awt.Container;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 
@@ -16,12 +20,35 @@ import javax.swing.JOptionPane;
  * @author gan
  */
 public class SelectRest extends javax.swing.JFrame {
-
-   
     
+    List<customer> customer = new ArrayList<>();
+        
+       
+   
+   
     public SelectRest() {
+      
+        
         initComponents();
+        
+    customer cust1 = new customer("C001","Leong ","950330-14-2569","017-6762311","leong@gmail.com","123,Jalan GK ,53300 KL");
+    customer cust2 = new customer("C002","AAA ","951221-14-7889","012-3456789","AAA@gmail.com","123,Jalan K ,53300 KL");
+    customer cust3 = new customer("C003","BBB ","020330-14-1234","019-8765432","BBB@gmail.com","3-2, blok b, Taman LOL, 53300 KL");
+    customer.add(cust1); 
+    customer.add(cust2);
+    customer.add(cust3);
+    
     }
+        
+       
+     
+     
+         
+     
+    
+    
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,6 +63,8 @@ public class SelectRest extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txt1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,33 +87,47 @@ public class SelectRest extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Enter Custimer Id:");
+
+        txt1.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jButton1)
-                .addGap(92, 92, 92)
-                .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(71, 71, 71))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jButton1)
+                        .addGap(92, 92, 92)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(66, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -95,23 +138,54 @@ public class SelectRest extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+          
+         
+        
         String value =(String)jComboBox1.getSelectedItem();
          if((String)jComboBox1.getSelectedItem()=="LOL Western Food"){
-              NewJFrame west = new NewJFrame();
-        
+             
+             NewJFrame west = new NewJFrame();
+            
+             if(txt1.getText().isEmpty() ){
+             JOptionPane.showMessageDialog(this, "Enter your customer ID !!! ");
+             west.setVisible(false);
+            
+        }
+             else{
+                 west.jTextField1.setText(this.txt1.getText()); 
                 west.setVisible(true);
+             }
          }
+         
          else if((String)jComboBox1.getSelectedItem()=="123 Restaurant"){
-             rest123 rest = new rest123(); 
+            rest123 rest = new rest123(); 
+             if(txt1.getText().isEmpty() ){
+             JOptionPane.showMessageDialog(this, "Enter your customer ID !!! ");
+             rest.setVisible(false);
+            
+        }
+            
+           else  {
+               rest.jTextField1.setText(this.txt1.getText());
              rest.setVisible(true); 
+             }
          }
          
          else if((String)jComboBox1.getSelectedItem()=="MID Fast Food"){
              MIDFastfood mid = new MIDFastfood();
+             if(txt1.getText().isEmpty() ){
+             JOptionPane.showMessageDialog(this, "Enter your customer ID !!! ");
+             mid.setVisible(false);
+            
+        }
+          else  { 
+                 
+             mid.jTextField1.setText(this.txt1.getText());
              mid.setVisible(true);
+             }
          }
          else
-             JOptionPane.showMessageDialog(this, "You Must Select A restaurant !!! ");
+             JOptionPane.showMessageDialog(this, "You Must Select A restaurant and customer ID !!! ");
         
             
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -125,28 +199,8 @@ public class SelectRest extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SelectRest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SelectRest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SelectRest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SelectRest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+        
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -161,6 +215,8 @@ public class SelectRest extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    public static javax.swing.JTextField txt1;
     // End of variables declaration//GEN-END:variables
 
 }

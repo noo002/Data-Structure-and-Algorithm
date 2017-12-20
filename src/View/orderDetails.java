@@ -18,34 +18,36 @@ import Control.QueueInterface;
  */
 public class orderDetails extends javax.swing.JFrame {
 
-    QueueInterface<order> myQueue = new LinkedQueue<>(); 
-    public LinkedQueue o = new LinkedQueue();
-    
+     
+   LinkedQueue myQueue = new LinkedQueue<>();    
+   
+  
    
    
       
-    public orderDetails(LinkedQueue o ) {
+    public orderDetails( LinkedQueue myQueue) {
+        this.myQueue = myQueue; 
        
-        this.o = o ; 
+         
         initComponents();
         
        
     
     
     
-     if(o.returnQueue() == null)
+     if(myQueue.returnQueue() == null)
         {
-        Object[] title = {"Order ID", "Order Date","Order Time","Total Amount"}; 
+        Object[] title = {"Customer ID","Order ID", "Order Date","Order Time","Total Amount"}; 
         Object[][] data = null;
         DefaultTableModel tableModel = new DefaultTableModel(data, title);
         jTable2.setModel(tableModel);   
         }
-        if(o.returnQueue()!= null)
+        if(myQueue.returnQueue()!= null)
         {
         
         
-         Object[] title = {"Order ID", "Order Date","Order Time","Total Amount"}; 
-        Object[][] data = o.returnQueue();
+         Object[] title = {"Customer ID","Order ID", "Order Date","Order Time","Total Amount"}; 
+        Object[][] data = myQueue.returnQueue();
         DefaultTableModel tableModel = new DefaultTableModel(data, title);
         jTable2.setModel(tableModel);
         }
@@ -56,10 +58,8 @@ public class orderDetails extends javax.swing.JFrame {
     
    
    
-        
-
-        
-    }
+  }
+    
  
   
 

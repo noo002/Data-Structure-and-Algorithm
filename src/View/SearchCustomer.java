@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -205,9 +206,10 @@ public class SearchCustomer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   //     customer.clear();
+       
         String PhoneNo = jTextField1.getText();
         filterJTable(PhoneNo);
+        
    
         
         
@@ -242,6 +244,7 @@ public class SearchCustomer extends javax.swing.JFrame {
     
     DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
     Object rowData[] = new Object[6];
+    
     for(int i=0;i<customer.size();i++){
         rowData[0] = customer.get(i).getCustomerId();
         rowData[1] = customer.get(i).getName();
@@ -251,7 +254,7 @@ public class SearchCustomer extends javax.swing.JFrame {
         rowData[5] = customer.get(i).getAddress();
         model.addRow(rowData);
     }
-    customer.clear();
+    //customer.clear();
 }
    
    public void filterJTable(String PhoneNo){
@@ -265,8 +268,10 @@ public class SearchCustomer extends javax.swing.JFrame {
                int columnIndex = 3;
               // int columnIndex = jTable1.convertColumnIndexToModel(viewColumn);
                     filter.setRowFilter(RowFilter.regexFilter("(?i)" + PhoneNo,columnIndex));
+                    
+                  
                 }
-          // filter.setRowFilter(RowFilter.regexFilter(sFoodName));
+          
         }
         
     /**
