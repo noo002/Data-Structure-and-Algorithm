@@ -7,6 +7,7 @@ package View;
 
 import Control.LListR;
 import Control.LStackR;
+import Control.StackInterfaceR;
 import Model.MenuItem;
 import Model.food;
 import Model.menu;
@@ -18,9 +19,9 @@ import Model.menu;
 public class RestaurantHome extends javax.swing.JFrame {
 
    //public static LStackR<MenuItem> stack = new LStackR<>();
-   public static LStackR<food> stackFood = new LStackR<>();
-   public static LStackR<menu> stackMenu = new LStackR<>();
-   public static LListR<MenuItem> listMenu = new LListR<>();
+   public static StackInterfaceR<food> stackFood = new LStackR<>();
+   public static StackInterfaceR<menu> stackMenu = new LStackR<>();
+   //public static LListR<MenuItem> listMenu = new LListR<>();
     public RestaurantHome() {
         initComponents();
         setLocationRelativeTo(null);

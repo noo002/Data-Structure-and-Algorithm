@@ -10,15 +10,14 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Control.LListR;
 import Control.LStackR;
+import Control.ListInterfaceR;
 import Model.Restaurant;
 import Model.food;
 
 
 public class AddMenuItem extends javax.swing.JFrame {
-     LStackR<MenuItem> stack = new LStackR<>();
-    LListR<MenuItem> list = new LListR<>();
-    LListR<menu> listMenu = new LListR<>();
-    LListR<food> listFood = new LListR<>();
+    ListInterfaceR<menu> listMenu = new LListR<>();
+    ListInterfaceR<food> listFood = new LListR<>();
     String name,category,description;
     double price;
 

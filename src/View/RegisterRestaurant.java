@@ -3,6 +3,7 @@ package View;
 
 import javax.swing.JOptionPane;
 import Control.LListR;
+import Control.ListInterfaceR;
 import Model.Restaurant;
 import Model.food;
 
@@ -17,7 +18,7 @@ import Model.food;
  * @author Wei Kit
  */
 public class RegisterRestaurant extends javax.swing.JFrame {
-    public static LListR<Restaurant> list = new LListR<>();
+    public static ListInterfaceR<Restaurant> list = new LListR<>();
     boolean checkRes = true;
     /**
      * Creates new form RegisterRestaurant
