@@ -1,6 +1,7 @@
 package View;
 
 
+import Control.CustInterface;
 import Control.CustList;
 import Model.customer;
 import javax.swing.JOptionPane;
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class searchCust extends javax.swing.JFrame {
 
-    private CustList list = new CustList();
+    private CustInterface<customer> list = new CustList();
     
     public searchCust(CustList list) {
         
@@ -31,6 +32,10 @@ public class searchCust extends javax.swing.JFrame {
          jTextField7.setEditable(false);
         jTextArea1.setEditable(false);
     }
+
+   public searchCust() {
+       initComponents();
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.

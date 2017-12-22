@@ -1,10 +1,12 @@
 package View;
 
 
+import Control.CustInterface;
 import Control.CustList;
 import Model.order;
 import Control.LinkedQueue;
 import Control.QueueInterface;
+import Model.customer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,8 +21,8 @@ import Control.QueueInterface;
 public class Home extends javax.swing.JFrame {
 
     
-  public static LinkedQueue <order> myQueue = new LinkedQueue<>(); 
-  public static CustList list = new CustList();
+  public static LinkedQueue myQueue = new LinkedQueue<>(); ; 
+  public static  CustInterface<customer> list = new CustList();
   
     public Home() {
         initComponents();

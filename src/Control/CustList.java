@@ -11,7 +11,7 @@ import Model.customer;
  */
 public class CustList<T> implements CustInterface<T> {
     
-  public static int lastCustID = 1 ;
+  public static int lastCustID = 001 ;
     
 
   private Node firstNode; // reference to first node
@@ -221,6 +221,9 @@ public class CustList<T> implements CustInterface<T> {
      } 
     return null;
     }
+
+   
+    
 
   private class Node {
 

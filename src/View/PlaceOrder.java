@@ -8,10 +8,10 @@ import Model.order;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+
 import java.util.Date;
-import java.util.List;
-import java.util.Queue;
+
+
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,8 +21,8 @@ import javax.swing.table.DefaultTableModel;
 public class PlaceOrder extends javax.swing.JFrame {
      
     
-  LinkedQueue <order> myQueue = new LinkedQueue<>(); 
-     List<food> menuItem = new ArrayList<>();
+   QueueInterface <order> myQueue = new LinkedQueue<>(); 
+     //List<food> menuItem = new ArrayList<>();
      
      
     

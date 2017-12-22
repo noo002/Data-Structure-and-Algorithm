@@ -19,7 +19,7 @@ import Control.QueueInterface;
 public class orderDetails extends javax.swing.JFrame {
 
      
-   LinkedQueue myQueue = new LinkedQueue<>();    
+  public QueueInterface <order> myQueue = new LinkedQueue<>();  
    
   
    

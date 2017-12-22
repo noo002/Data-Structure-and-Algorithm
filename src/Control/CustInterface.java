@@ -81,6 +81,12 @@ public interface CustInterface<T> {
      * full, or false if not
      */
     public boolean isFull();
+    
+     public T SearchCust(String ContactNo); 
+    
+    int lastCustID();
+    
+    public void IncreaseCustID();
 }
 
 

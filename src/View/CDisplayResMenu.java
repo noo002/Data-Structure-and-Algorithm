@@ -4,6 +4,7 @@ package View;
 import Model.food;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -34,9 +35,9 @@ public class CDisplayResMenu extends javax.swing.JFrame {
     // This function to insert data into table first
     food menu = new food("Chicken Chop",15,0);
     food menu1 = new food("Fish Chop",15,0);
-    food menu2 = new food("Pork Chop",15,0);
-    menuItem.add(menu);
-    menuItem.add(menu1);
+  food menu2 = new food("Pork Chop",15,0);
+   menuItem.add(menu);
+   menuItem.add(menu1);
     menuItem.add(menu2);
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     for(int i=0;i<RestaurantHome.stackFood.getNumberOfEntries();i++){

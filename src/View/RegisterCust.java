@@ -1,6 +1,7 @@
 package View;
 
 
+import Control.CustInterface;
 import Control.CustList;
 import Model.customer;
 import java.awt.event.WindowEvent;
@@ -18,14 +19,14 @@ import javax.swing.JOptionPane;
  */
 public class RegisterCust extends javax.swing.JFrame {
 
-    CustList list = new CustList(); 
+   CustInterface<customer> list = new CustList(); 
     
     public RegisterCust() {
         
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
-        jTextField1.setText("C" + list.lastCustID);
+        jTextField1.setText("C" + list.lastCustID());
         jTextField1.setEditable(false);
     }
 
