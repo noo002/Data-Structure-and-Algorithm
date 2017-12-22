@@ -11,19 +11,21 @@ package Model;
  */
 public class Restaurant {
     
-    String resName,resAddress,ownerName,ownerEmail;
+    String resName,resAddress,ownerName,ownerEmail,password,area;
     int ownerContactNum,resContactNum;
     
     public Restaurant(){
         
     }
-    public Restaurant(String resName, String resAddress, String ownerName, String ownerEmail, int ownerContactNum,int resContactNum){
+    public Restaurant(String resName, String resAddress, String ownerName, String ownerEmail, int ownerContactNum,int resContactNum,String password,String area){
         this.resName=resName;
         this.resAddress= resAddress;
         this.ownerName = ownerName;
         this.ownerEmail=ownerEmail;
         this.ownerContactNum=ownerContactNum;
         this.resContactNum = resContactNum;
+        this.password=password;
+        this.area=area;
     }
 
     public int getOwnerContactNum() {
@@ -49,6 +51,10 @@ public class Restaurant {
     public int getResContactNum() {
         return resContactNum;
     }
+
+    public String getPassword() {
+        return password;
+    }
     
 
     public void setOwnerContactNum(int ownerContactNum) {
@@ -73,6 +79,18 @@ public class Restaurant {
 
     public void setResContactNum(int resContactNum) {
         this.resContactNum = resContactNum;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getArea() {
+        return area;
     }
     
 }

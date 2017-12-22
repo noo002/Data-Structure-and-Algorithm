@@ -4,6 +4,8 @@ package View;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Model.MenuItem;
+import Model.food;
+import Model.menu;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,32 +25,21 @@ public class UpdateMenu extends javax.swing.JFrame {
     public UpdateMenu() {
         initComponents();
         setTitle("Update Menu");
-        //setTextFieldNonEditable();
         addDataToJTable();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
-   /* public void setTextFieldNonEditable(){
-        jtfName.setEditable(false);
-        jtfPrice.setEditable(false);
-        jtfCategory.setEditable(false);
-        jtfDescription.setEditable(false);
-    }*/
+
     public void addDataToJTable(){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
          Object rowData[] = new Object[4];
-    //for testing purposes
-    /*MenuItem menu = new MenuItem("Chicken Chop",12.0,"Chicken","Good");
-    MenuItem menu1 = new MenuItem("Pork Chop",9.0,"Pork","Nice");
-    RestaurantHome.stack.push(menu);
-    RestaurantHome.stack.push(menu1);*/
+
     //insert data from stack to jtable
-    
-   for(int i=1;i<=RestaurantHome.stack.getNumberOfEntries();i++){
-            rowData[0] = RestaurantHome.stack.displayStack(i).getMenuName();
-            rowData[1] = RestaurantHome.stack.displayStack(i).getPrice();
-            rowData[2] = RestaurantHome.stack.displayStack(i).getCategory();
-            rowData[3] = RestaurantHome.stack.displayStack(i).getDescription();
+   for(int i=1;i<=RestaurantHome.stackFood.getNumberOfEntries();i++){
+            rowData[0] = RestaurantHome.stackFood.displayStack(i).getFoodName();
+            rowData[1] = RestaurantHome.stackFood.displayStack(i).getPrice();
+            rowData[2] = RestaurantHome.stackMenu.displayStack(i).getCategory();
+            rowData[3] = RestaurantHome.stackFood.displayStack(i).getDescription();
             model.addRow(rowData);
         }
        
@@ -132,7 +123,7 @@ public class UpdateMenu extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Choose a menu detail from the table");
 
-        jbtBackHome.setText("Back To Home");
+        jbtBackHome.setText("Back To Previous page");
         jbtBackHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtBackHomeActionPerformed(evt);
@@ -180,7 +171,7 @@ public class UpdateMenu extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(228, 228, 228)
-                .addComponent(jbtBackHome, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtBackHome, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -236,15 +227,23 @@ public class UpdateMenu extends javax.swing.JFrame {
 
     private void jbtUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtUpdateActionPerformed
         // TODO add your handling code here:
+        //get the values from the textboxes
         int rowClicked = jTable1.getSelectedRow();
         String newName = jtfName.getText();
         double newPrice = Double.parseDouble(jtfPrice.getText());
         String newCategory = jtfCategory.getText();
         String newDescription = jtfDescription.getText();
-        MenuItem menu = new MenuItem(newName,newPrice,newCategory,newDescription);
-        RestaurantHome.stack.replace(rowClicked +1, menu);
-        System.out.println("Name : "+ RestaurantHome.stack.peek().getMenuName());
-        System.out.println("Price : "+ RestaurantHome.stack.peek().getPrice());
+        //set it to model
+        food food = new food();
+        menu me = new menu();
+        food.setFoodName(newName);
+        food.setPrice(newPrice);
+        food.setDescription(newDescription);
+        food.setResName(ExistingRestaurant.name);
+        me.setCategory(newCategory);
+        //replace it in linked stack
+        RestaurantHome.stackMenu.replace(rowClicked +1, me);
+        RestaurantHome.stackFood.replace(rowClicked + 1, food);
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         //remove or refresh all the data of the jtable
        if (model.getRowCount() > 0) {

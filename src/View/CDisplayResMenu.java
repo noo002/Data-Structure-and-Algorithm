@@ -17,16 +17,17 @@ import javax.swing.table.TableModel;
  *
  * @author gan
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class CDisplayResMenu extends javax.swing.JFrame {
     
      List<food> menuItem = new ArrayList<>();
 
     
-    public NewJFrame() {
+    public CDisplayResMenu() {
         initComponents();
-        
+       jlblResName.setText(SelectRest.selectedResName);
         jTextField1.setEditable(false);
         populateTable();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     public void populateTable(){
@@ -38,15 +39,18 @@ public class NewJFrame extends javax.swing.JFrame {
     menuItem.add(menu1);
     menuItem.add(menu2);
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    for(int i=0;i<RestaurantHome.stackFood.getNumberOfEntries();i++){
+    if(SelectRest.selectedResName.equals(RestaurantHome.stackFood.displayStack(i+1).getResName())){
     Object rowData[] = new Object[3];
-    for(int i=0;i<menuItem.size();i++){
-        rowData[0] = menuItem.get(i).getFoodName();
-        rowData[1] = menuItem.get(i).getPrice();
+    for(i=0;i<RestaurantHome.stackFood.getNumberOfEntries();i++){
+        rowData[0] = RestaurantHome.stackFood.displayStack(i+1).getFoodName();
+        rowData[1] = RestaurantHome.stackFood.displayStack(i+1).getPrice();
         rowData[2] = menuItem.get(i).getQuantity();
-        
         model.addRow(rowData);
     }
-    menuItem.clear();
+    }
+    }
+    //menuItem.clear();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,7 +64,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jlblResName = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
 
@@ -71,7 +75,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Food", "price", "quantity"
+                "Food Name", "Price", "Quantity"
             }
         ) {
             Class[] types = new Class [] {
@@ -98,8 +102,8 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("LOL WESTERN FOOD");
+        jlblResName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlblResName.setText("LOL WESTERN FOOD");
 
         jButton2.setText("CANCEL");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +122,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jlblResName, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGap(53, 53, 53)
@@ -135,7 +139,7 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(jlblResName, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,7 +196,7 @@ public class NewJFrame extends javax.swing.JFrame {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new CDisplayResMenu().setVisible(true);
             }
         });
     }
@@ -200,9 +204,9 @@ public class NewJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     public static javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jlblResName;
     // End of variables declaration//GEN-END:variables
 }

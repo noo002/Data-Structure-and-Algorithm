@@ -2,7 +2,7 @@ package View;
 
 
 import Model.MenuItem;
-
+import Model.menu;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
@@ -10,20 +10,24 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Control.LListR;
 import Control.LStackR;
+import Model.Restaurant;
+import Model.food;
 
 
-public class AddMenu extends javax.swing.JFrame {
+public class AddMenuItem extends javax.swing.JFrame {
      LStackR<MenuItem> stack = new LStackR<>();
     LListR<MenuItem> list = new LListR<>();
-   // List<MenuItem> menuItem = new ArrayList<>();
-  
+    LListR<menu> listMenu = new LListR<>();
+    LListR<food> listFood = new LListR<>();
     String name,category,description;
     double price;
 
-    public AddMenu() {
+    public AddMenuItem() {
         initComponents();
         setTitle("Add Menu");
         setSize(800,500);
+        Restaurant res = new Restaurant();
+        //jlblResName.setText(ExistingRestaurant.name);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
@@ -57,6 +61,7 @@ public class AddMenu extends javax.swing.JFrame {
         jbtEdit = new javax.swing.JButton();
         jbtConfirm = new javax.swing.JButton();
         jbtHome = new javax.swing.JButton();
+        jlblResName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,7 +99,7 @@ public class AddMenu extends javax.swing.JFrame {
 
         jlblDescription.setText("Description : ");
 
-        jlblTitle.setText("Add Menu");
+        jlblTitle.setText("Add Menu Item");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,7 +133,7 @@ public class AddMenu extends javax.swing.JFrame {
             }
         });
 
-        jbtHome.setText("Back To Home");
+        jbtHome.setText("Back To Previous page");
         jbtHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtHomeActionPerformed(evt);
@@ -140,11 +145,11 @@ public class AddMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(296, 296, 296)
-                .addComponent(jlblTitle))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(268, 268, 268)
-                .addComponent(jbtHome))
+                .addGap(284, 284, 284)
+                .addComponent(jlblTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlblResName)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,16 +188,25 @@ public class AddMenu extends javax.swing.JFrame {
                         .addGap(53, 53, 53)
                         .addComponent(jbtEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(jbtConfirm))))
+                        .addComponent(jbtConfirm)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(245, 245, 245)
+                .addComponent(jbtHome)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlblTitle)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlblTitle)
+                    .addComponent(jlblResName))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -206,8 +220,7 @@ public class AddMenu extends javax.swing.JFrame {
                                 .addGap(27, 27, 27)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jbtEdit)
-                                    .addComponent(jbtConfirm))
-                                .addGap(86, 170, Short.MAX_VALUE))
+                                    .addComponent(jbtConfirm)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -225,11 +238,10 @@ public class AddMenu extends javax.swing.JFrame {
                                 .addGap(38, 38, 38)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jbtAdd)
-                                    .addComponent(jbtReset))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbtHome, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)))))
-                .addGap(27, 27, 27))
+                                    .addComponent(jbtReset))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                        .addComponent(jbtHome, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62))))
         );
 
         pack();
@@ -241,9 +253,15 @@ public class AddMenu extends javax.swing.JFrame {
          price = Double.parseDouble(jtfPrice.getText());
          category = jcbCategory.getSelectedItem().toString();
         description = jtaDescription.getText();
-        MenuItem menu = new MenuItem(name,price,category,description);
-        //add to linked list first
-        list.add(menu);
+        menu me = new menu(); 
+        me.setCategory(category);
+        food food = new food();
+        food.setFoodName(name);
+        food.setPrice(price);
+        food.setDescription(description);
+        //add to linked list first and display in JTable
+        listMenu.add(me);
+        listFood.add(food);
         addRowToJTable();
 
     }//GEN-LAST:event_jbtAddActionPerformed
@@ -256,15 +274,17 @@ public class AddMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtResetActionPerformed
 
     private void jbtEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtEditActionPerformed
-         if(jTable1.getSelectedRow() >=0){
-        String menuName = JOptionPane.showInputDialog("Enter the menu name : ");
-         String price = JOptionPane.showInputDialog("Enter the price : ");
+        /* This function to edit the items in jtable */
+        if(jTable1.getSelectedRow() >=0){
+        String menuName = JOptionPane.showInputDialog("Enter the food name : ");
+            String price = JOptionPane.showInputDialog("Enter the price : ");
+            double price1 = Double.parseDouble(price);
          int categoryIndex = JOptionPane.showConfirmDialog(null, jcbCategory, "Category ", JOptionPane.OK_CANCEL_OPTION);
          String category = jcbCategory.getSelectedItem().toString();
          String description = JOptionPane.showInputDialog("Enter the description : ");
          //change data on the JTable
          jTable1.getModel().setValueAt(menuName, jTable1.getSelectedRow(), 0);
-         jTable1.getModel().setValueAt(price, jTable1.getSelectedRow(), 1);
+         jTable1.getModel().setValueAt(price1, jTable1.getSelectedRow(), 1);
         jTable1.getModel().setValueAt(category, jTable1.getSelectedRow(),2);
          jTable1.getModel().setValueAt(description, jTable1.getSelectedRow(), 3);
          }
@@ -275,25 +295,25 @@ public class AddMenu extends javax.swing.JFrame {
 
     private void jbtConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtConfirmActionPerformed
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-         /*MenuItem item = new MenuItem();
-        //add items from jtable to model and then push to linked stack
-       for(int i=0;i<model.getRowCount();i++){
-           item.setMenuName((String) jTable1.getModel().getValueAt(i,0));
-           item.setPrice((double) jTable1.getModel().getValueAt(i,1));
-           item.setCategory((String) jTable1.getModel().getValueAt(i,2));
-           item.setDescription((String) jTable1.getModel().getValueAt(i,3));
-           RestaurantHome.stack.push(item);
-           System.out.println(item+ "Item ");
-           System.out.println(item.getMenuName());
-       }*/
+        //get value from jtable
          for(int i=0;i<model.getRowCount();i++){
              String name = (String) jTable1.getModel().getValueAt(i,0);
              double price = (double) jTable1.getModel().getValueAt(i,1);
              String category = (String) jTable1.getModel().getValueAt(i,2);
              String description = (String) jTable1.getModel().getValueAt(i,3);
-              MenuItem menu = new MenuItem(name,price,category,description);
-              RestaurantHome.stack.push(menu);
+             // add to model
+             menu me = new menu(); 
+            me.setCategory(category);
+            food food = new food();
+            food.setFoodName(name);
+            food.setPrice(price);
+            food.setDescription(description);
+            food.setResName(ExistingRestaurant.name);
+            //push to stack
+              RestaurantHome.stackFood.push(food);
+              RestaurantHome.stackMenu.push(me);
          }
+         //show how many menu items added
        JOptionPane.showMessageDialog(null,"You added "+ model.getRowCount()+ " menu items");
     }//GEN-LAST:event_jbtConfirmActionPerformed
 
@@ -307,27 +327,16 @@ public void addRowToJTable(){
     Object rowData[] = new Object[4];
 
     //retrieve details from linked list to jtable
-    for(int i=0;i<list.getNumberOfEntries();i++){
-        rowData[0] = list.getEntry(i+1).getMenuName();
-        rowData[1] = list.getEntry(i+1).getPrice();
-        rowData[2] = list.getEntry(i+1).getCategory();
-        rowData[3] = list.getEntry(i+1).getDescription();
-        }
-    model.addRow(rowData);
-    }
-   
+   for(int i=0;i<listFood.getNumberOfEntries();i++){
+       rowData[0] = listFood.getEntry(i+1).getFoodName();
+       rowData[1] = listFood.getEntry(i+1).getPrice();
+       rowData[2] = listMenu.getEntry(i+1).getCategory();
+       rowData[3] = listFood.getEntry(i+1).getDescription();
+   }
+   model.addRow(rowData);
+}
     
 
-    /*public static String formatList(List menuItem){
-         String outputStr = "";
-    for (int i = 0; i < menuItem.size(); ++i) {
-      outputStr += (i+1) + ". " + menuItem.get(i);
-    }
-    return outputStr;
-    }*/
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -342,21 +351,23 @@ public void addRowToJTable(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMenuItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMenuItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMenuItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMenuItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddMenu().setVisible(true);
+                new AddMenuItem().setVisible(true);
             }
         });
     }
@@ -378,6 +389,7 @@ public void addRowToJTable(){
     private javax.swing.JLabel jlblDescription;
     private javax.swing.JLabel jlblName;
     private javax.swing.JLabel jlblPrice;
+    private javax.swing.JLabel jlblResName;
     private javax.swing.JLabel jlblTitle;
     private javax.swing.JTextArea jtaDescription;
     private javax.swing.JTextField jtfName;

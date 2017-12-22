@@ -4,6 +4,7 @@ package View;
 import javax.swing.JOptionPane;
 import Control.LListR;
 import Model.Restaurant;
+import Model.food;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,7 +17,8 @@ import Model.Restaurant;
  * @author Wei Kit
  */
 public class RegisterRestaurant extends javax.swing.JFrame {
-    LListR<Restaurant> list = new LListR<>();
+    public static LListR<Restaurant> list = new LListR<>();
+    boolean checkRes = true;
     /**
      * Creates new form RegisterRestaurant
      */
@@ -54,6 +56,10 @@ public class RegisterRestaurant extends javax.swing.JFrame {
         jbtReset = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jtfResContactNum = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jpfPass = new javax.swing.JPasswordField();
+        jLabel10 = new javax.swing.JLabel();
+        jcbArea = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,49 +100,59 @@ public class RegisterRestaurant extends javax.swing.JFrame {
 
         jLabel8.setText("Restaurant Contact Number :");
 
+        jLabel9.setText("Password : ");
+
+        jLabel10.setText("Area  : ");
+
+        jcbArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Wangsa Maju", "Genting Kelang", "PV", "Melati Utama", "Teratai Residency" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9))
+                        .addGap(24, 24, 24)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jcbArea, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                        .addComponent(jtfOwnerName, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                        .addComponent(jtfOwnerContact, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                        .addComponent(jtfResContactNum))
+                    .addComponent(jtfResName, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfOwnerEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(120, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtfResContactNum))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(23, 23, 23)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jtfOwnerContact, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                                        .addComponent(jtfOwnerName)
-                                        .addComponent(jtfOwnerEmail))))
-                            .addComponent(jtfResName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(140, 140, 140))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(jbtRegister)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbtReset))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(171, 171, 171)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addComponent(jbtRegister)
+                        .addGap(26, 26, 26)
+                        .addComponent(jbtReset, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -159,27 +175,35 @@ public class RegisterRestaurant extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcbArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jtfResContactNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfOwnerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel5)
+                    .addComponent(jtfOwnerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jtfOwnerEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
                     .addComponent(jtfOwnerContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jpfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtRegister)
                     .addComponent(jbtReset))
-                .addGap(91, 91, 91))
+                .addGap(66, 66, 66))
         );
 
         pack();
@@ -207,20 +231,33 @@ public class RegisterRestaurant extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Please fill in your owner contact number","Invalid Owner Contact Number",
                     JOptionPane.ERROR_MESSAGE);
         }
+         if(jpfPass.getPassword().equals("")){
+            JOptionPane.showMessageDialog(null,"Please fill in your password","Invalid Password",
+                    JOptionPane.ERROR_MESSAGE);
+        }
         else{
         String resName = jtfResName.getText();
+        //check if restaurant name got register before or not
+        checkResName(resName);
+        //if not same then register it if not then show error message
+        if(checkRes){
         String resAdd = jtaAddress.getText();
         String ownerName = jtfOwnerName.getText();
         int resContactNum = Integer.parseInt(jtfResContactNum.getText());
         int ownerContactNum = Integer.parseInt(jtfOwnerContact.getText());
         String ownerEmail = jtfOwnerEmail.getText();
-       
-       
-        Restaurant res = new Restaurant(resName,resAdd,ownerName,ownerEmail,ownerContactNum,resContactNum);
+       String password = jpfPass.getPassword().toString();
+       String area = jcbArea.getSelectedItem().toString();
+        Restaurant res = new Restaurant(resName,resAdd,ownerName,ownerEmail,ownerContactNum,resContactNum,password,area);
         list.add(res);
+        ExistingRestaurant.name = resName;
         JOptionPane.showMessageDialog(null,"You have successfully registered your restaurant as affiliate of Fastest Deliveryman","Register Successful",JOptionPane.INFORMATION_MESSAGE);
         dispose();
         new RestaurantHome().setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"This restaurant name has been used before..Please recheck your details");
+        }
         }
     }//GEN-LAST:event_jbtRegisterActionPerformed
 
@@ -271,6 +308,7 @@ public class RegisterRestaurant extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -278,10 +316,13 @@ public class RegisterRestaurant extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbtRegister;
     private javax.swing.JButton jbtReset;
+    private javax.swing.JComboBox<String> jcbArea;
+    private javax.swing.JPasswordField jpfPass;
     private javax.swing.JTextArea jtaAddress;
     private javax.swing.JTextField jtfOwnerContact;
     private javax.swing.JTextField jtfOwnerEmail;
@@ -289,4 +330,20 @@ public class RegisterRestaurant extends javax.swing.JFrame {
     private javax.swing.JTextField jtfResContactNum;
     private javax.swing.JTextField jtfResName;
     // End of variables declaration//GEN-END:variables
+
+    public boolean checkResName(String resName) {
+        for(int i=0;i<list.getNumberOfEntries();i++){
+            if(resName.equals(list.getEntry(i+1).getResName())){
+                
+                 checkRes = false;
+                 System.out.println("Res name : "+ checkRes);
+                 break;
+            }
+            else{
+                 checkRes = true;
+            }
+        }
+        return checkRes;
+    }
 }
+       

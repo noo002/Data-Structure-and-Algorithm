@@ -76,7 +76,7 @@ public class RemoveMenuItem extends javax.swing.JFrame {
             }
         });
 
-        jbtCancel.setText("Cancel");
+        jbtCancel.setText("Back");
         jbtCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtCancelActionPerformed(evt);
@@ -102,7 +102,7 @@ public class RemoveMenuItem extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(135, 135, 135)
                         .addComponent(jbtRemove)
-                        .addGap(18, 18, 18)
+                        .addGap(26, 26, 26)
                         .addComponent(jbtCancel)))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
@@ -121,7 +121,7 @@ public class RemoveMenuItem extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtRemove)
                     .addComponent(jbtCancel))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,7 +130,9 @@ public class RemoveMenuItem extends javax.swing.JFrame {
     private void jbtRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtRemoveActionPerformed
        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         int selectedRow = jTable1.getSelectedRow();
-            RestaurantHome.stack.remove(selectedRow+1);
+        //remove the selected row data from the linked stack
+            RestaurantHome.stackFood.remove(selectedRow+1);
+            RestaurantHome.stackMenu.remove(selectedRow+1);
              //remove or refresh all the data of the jtable
        if (model.getRowCount() > 0) {
     for (int i = model.getRowCount() - 1; i > -1; i--) {
@@ -195,13 +197,14 @@ public class RemoveMenuItem extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void getDataIntoJTable() {
+        //this function display all data from linked stack to jtable
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Object rowData[] = new Object[4];
-        for(int i=1;i<=RestaurantHome.stack.getNumberOfEntries();i++){
-            rowData[0] = RestaurantHome.stack.displayStack(i).getMenuName();
-            rowData[1] = RestaurantHome.stack.displayStack(i).getPrice();
-            rowData[2] = RestaurantHome.stack.displayStack(i).getCategory();
-            rowData[3] = RestaurantHome.stack.displayStack(i).getDescription();
+        for(int i=1;i<=RestaurantHome.stackFood.getNumberOfEntries();i++){
+            rowData[0] = RestaurantHome.stackFood.displayStack(i).getFoodName();
+            rowData[1] = RestaurantHome.stackFood.displayStack(i).getPrice();
+            rowData[2] = RestaurantHome.stackMenu.displayStack(i).getCategory();
+            rowData[3] = RestaurantHome.stackFood.displayStack(i).getDescription();
             model.addRow(rowData);
         }
     }

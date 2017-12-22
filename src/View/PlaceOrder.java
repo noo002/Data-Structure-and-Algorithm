@@ -145,7 +145,7 @@ public class PlaceOrder extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Food", "Price(1)", "Quantity", "Subtotal"
+                "Food", "Price", "Quantity", "Subtotal"
             }
         ) {
             boolean[] canEdit = new boolean [] {

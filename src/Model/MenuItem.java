@@ -12,14 +12,17 @@ package Model;
  */
 public class MenuItem {
      double price;
-    String status,promoInfo,menuName,category,description;
+    String status,promoInfo,menuName,category,description,resName;
     int menuCode;
     
-    public MenuItem(String menuName,double price,String category,String description){
+    
+    public MenuItem(String menuName,double price,String category,String description,String resName){
         this.menuName = menuName;
         this.price=price;
         this.category=category;
         this.description=description;
+        this.resName = resName;
+        
     }
     public MenuItem(){
         
@@ -53,6 +56,10 @@ public class MenuItem {
     public String getCategory() {
         return category;
     }
+
+    public String getResName() {
+        return resName;
+    }
     
 
     public void setPrice(double price) {
@@ -82,4 +89,9 @@ public class MenuItem {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public void setResName(String resName) {
+        this.resName = resName;
+    }
+    
 }

@@ -11,16 +11,16 @@ package Model;
  */
 public class customer {
     
-    private String customerId,address,contactNo,icNo,email,name;
+    private String customerId,address,contactNo,icNo,email,name,area;
     
-    public customer(String customerId,String name, String ICNo, String ContactNo,String email, String Address ) {
+    public customer(String customerId,String name, String ICNo, String ContactNo,String email, String Address, String area) {
         this.customerId = customerId;
         this.name = name;
         this.icNo =  ICNo; 
         this.contactNo = ContactNo;
        this.email = email; 
         this.address = Address;
-        
+        this.area=area;
     }
 
     
@@ -71,6 +71,14 @@ public class customer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
     }
     
     @Override

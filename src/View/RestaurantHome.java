@@ -8,6 +8,8 @@ package View;
 import Control.LListR;
 import Control.LStackR;
 import Model.MenuItem;
+import Model.food;
+import Model.menu;
 
 /**
  *
@@ -15,13 +17,15 @@ import Model.MenuItem;
  */
 public class RestaurantHome extends javax.swing.JFrame {
 
-   public static LStackR<MenuItem> stack = new LStackR<>();
+   //public static LStackR<MenuItem> stack = new LStackR<>();
+   public static LStackR<food> stackFood = new LStackR<>();
+   public static LStackR<menu> stackMenu = new LStackR<>();
    public static LListR<MenuItem> listMenu = new LListR<>();
     public RestaurantHome() {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Select Function");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -37,6 +41,7 @@ public class RestaurantHome extends javax.swing.JFrame {
         jbtViewMenu = new javax.swing.JButton();
         jbtUpdateMenu = new javax.swing.JButton();
         jbtRemoveMenu = new javax.swing.JButton();
+        jbtBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +73,13 @@ public class RestaurantHome extends javax.swing.JFrame {
             }
         });
 
+        jbtBack.setText("Back To Homepage");
+        jbtBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,7 +90,8 @@ public class RestaurantHome extends javax.swing.JFrame {
                     .addComponent(jbtAddMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbtViewMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbtUpdateMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbtRemoveMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jbtRemoveMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(241, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -92,30 +105,40 @@ public class RestaurantHome extends javax.swing.JFrame {
                 .addComponent(jbtUpdateMenu)
                 .addGap(26, 26, 26)
                 .addComponent(jbtRemoveMenu)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jbtBack)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtAddMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAddMenuActionPerformed
-        new AddMenu().setVisible(true);
+        dispose();
+        new AddMenuItem().setVisible(true);
     }//GEN-LAST:event_jbtAddMenuActionPerformed
 
     private void jbtViewMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtViewMenuActionPerformed
+        dispose();
         new ViewFood().setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtViewMenuActionPerformed
 
     private void jbtRemoveMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtRemoveMenuActionPerformed
+        dispose();
         new RemoveMenuItem().setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtRemoveMenuActionPerformed
 
     private void jbtUpdateMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtUpdateMenuActionPerformed
-        // TODO add your handling code here:
+        dispose();
         new UpdateMenu().setVisible(true);
     }//GEN-LAST:event_jbtUpdateMenuActionPerformed
+
+    private void jbtBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBackActionPerformed
+         dispose();
+         new HomePage().setVisible(true);
+    }//GEN-LAST:event_jbtBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,6 +180,7 @@ public class RestaurantHome extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtAddMenu;
+    private javax.swing.JButton jbtBack;
     private javax.swing.JButton jbtRemoveMenu;
     private javax.swing.JButton jbtUpdateMenu;
     private javax.swing.JButton jbtViewMenu;

@@ -41,6 +41,7 @@ public class MIDFastfood extends javax.swing.JFrame {
     menuItem.add(menu3);
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     Object rowData[] = new Object[3];
+    
     for(int i=0;i<menuItem.size();i++){
         rowData[0] = menuItem.get(i).getFoodName();
         rowData[1] = menuItem.get(i).getPrice();

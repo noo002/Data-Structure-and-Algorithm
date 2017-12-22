@@ -5,6 +5,7 @@ import Model.customer;
 import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -22,22 +23,29 @@ import javax.swing.JOptionPane;
 public class SelectRest extends javax.swing.JFrame {
     
     List<customer> customer = new ArrayList<>();
-        
-       
-   
+    public static String selectedResName;
    
     public SelectRest() {
-      
-        
+
         initComponents();
         
-    customer cust1 = new customer("C001","Leong ","950330-14-2569","017-6762311","leong@gmail.com","123,Jalan GK ,53300 KL");
+    /*customer cust1 = new customer("C001","Leong ","950330-14-2569","017-6762311","leong@gmail.com","123,Jalan GK ,53300 KL");
     customer cust2 = new customer("C002","AAA ","951221-14-7889","012-3456789","AAA@gmail.com","123,Jalan K ,53300 KL");
     customer cust3 = new customer("C003","BBB ","020330-14-1234","019-8765432","BBB@gmail.com","3-2, blok b, Taman LOL, 53300 KL");
     customer.add(cust1); 
     customer.add(cust2);
-    customer.add(cust3);
-    
+    customer.add(cust3);*/
+    DefaultComboBoxModel dcb = new DefaultComboBoxModel();
+        /*String[] text = new String[RegisterRestaurant.list.size()];
+          for(int i=0;i<text.length;i++){
+              text[i] = RegisterRestaurant.list.getEntry(i+1).getResName();
+          }*/
+        System.out.println("size : " + RegisterRestaurant.list.getNumberOfEntries());
+        for(int i=0;i<RegisterRestaurant.list.getNumberOfEntries();i++){
+            dcb.addElement(RegisterRestaurant.list.getEntry(i+1).getResName());
+        }
+         jComboBox1.setModel(dcb);
+        
     }
         
        
@@ -71,8 +79,6 @@ public class SelectRest extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Fastest Deliveryman");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select the restaurant--", "LOL Western Food", "123 Restaurant", "MID Fast Food" }));
-
         jButton1.setText("OK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,7 +93,7 @@ public class SelectRest extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Enter Custimer Id:");
+        jLabel2.setText("Enter Customer Id:");
 
         txt1.setToolTipText("");
 
@@ -138,11 +144,10 @@ public class SelectRest extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          
-         
-        
-        String value =(String)jComboBox1.getSelectedItem();
-         if((String)jComboBox1.getSelectedItem()=="LOL Western Food"){
+     selectedResName =(String)jComboBox1.getSelectedItem();
+     dispose();
+     new CDisplayResMenu().setVisible(true);
+         /*if((String)jComboBox1.getSelectedItem()=="LOL Western Food"){
              
              NewJFrame west = new NewJFrame();
             
@@ -186,7 +191,7 @@ public class SelectRest extends javax.swing.JFrame {
          }
          else
              JOptionPane.showMessageDialog(this, "You Must Select A restaurant and customer ID !!! ");
-        
+        */
             
     }//GEN-LAST:event_jButton1ActionPerformed
 
