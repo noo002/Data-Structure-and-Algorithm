@@ -2,13 +2,15 @@
 package View;
 
 import Control.myList;
+import Control.myListInterface;
 import Model.AddDeliveryManDa;
+import Model.HRExecutive;
 import Model.deliveryMan;
 
 public class HomePage extends javax.swing.JFrame {
 
-   public static myList<deliveryMan> d = new myList<>();
-
+  public static myListInterface<deliveryMan> d = new myList<>();
+   public static myListInterface<HRExecutive> HRData = new myList<>();
     public HomePage() {
         initComponents();
         initiaDetail();
@@ -111,8 +113,7 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
 
-        ShowDeliveryMan s = new ShowDeliveryMan(d);
-        s.setVisible(true);
+        new HRLogin((myList<deliveryMan>) d).setVisible(true);
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
@@ -167,11 +168,23 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 
-    private void initiaDetail() {
+        private void initiaDetail() {
         setLocationRelativeTo(null);
         setTitle("Home Page");
-//        AddDeliveryManDa da = new AddDeliveryManDa();
-//        d = da.getDeliveryMan();
-//        da.shutDown();
+        AddDeliveryManDa da = new AddDeliveryManDa();
+        d = da.getDeliveryMan();
+        da.shutDown();
+        HRExecutive data = new HRExecutive("HR00001", "123123", "eugence966@hotmail.com");
+        HRExecutive data2 = new HRExecutive("HR00002", "123123", "eugence966@hotmail.com");
+        HRExecutive data3 = new HRExecutive("HR00003", "123123", "eugence966@hotmail.com");
+        HRExecutive data4 = new HRExecutive("HR00004", "123123", "eugence966@hotmail.com");
+        HRExecutive data5 = new HRExecutive("HR00005", "123123", "eugence966@hotmail.com");
+       
+        HomePage.HRData.add(data);
+        HomePage.HRData.add(data2);
+        HomePage.HRData.add(data3);
+        HomePage.HRData.add(data4);
+        HomePage.HRData.add(data5);
+
     }
 }
