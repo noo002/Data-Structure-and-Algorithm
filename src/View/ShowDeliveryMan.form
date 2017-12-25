@@ -266,11 +266,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Daily Report"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtDailyReportActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbtPendingDeliveries">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pending Deliveries"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtPendingDeliveriesActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

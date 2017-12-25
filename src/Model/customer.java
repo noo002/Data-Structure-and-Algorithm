@@ -12,6 +12,9 @@ package Model;
 public class customer {
     
     private String customerId,address,contactNo,icNo,email,name,area;
+
+    public customer() {
+    }
     
     public customer(String customerId,String name, String ICNo, String ContactNo,String email, String Address, String area) {
         this.customerId = customerId;

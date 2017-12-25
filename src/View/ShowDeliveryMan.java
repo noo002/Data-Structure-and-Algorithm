@@ -131,8 +131,18 @@ public class ShowDeliveryMan extends javax.swing.JFrame {
         });
 
         jbtDailyReport.setText("Daily Report");
+        jbtDailyReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtDailyReportActionPerformed(evt);
+            }
+        });
 
         jbtPendingDeliveries.setText("Pending Deliveries");
+        jbtPendingDeliveries.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtPendingDeliveriesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -272,6 +282,16 @@ public class ShowDeliveryMan extends javax.swing.JFrame {
         new AddDeliveryMan().setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jbtPendingDeliveriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtPendingDeliveriesActionPerformed
+ 
+        new PendingDeliveries().setVisible(true);
+    }//GEN-LAST:event_jbtPendingDeliveriesActionPerformed
+
+    private void jbtDailyReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtDailyReportActionPerformed
+ 
+        new DailyReport().setVisible(true);
+    }//GEN-LAST:event_jbtDailyReportActionPerformed
 
     /**
      * @param args the command line arguments
