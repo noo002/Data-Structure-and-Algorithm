@@ -25,7 +25,7 @@ public class SelectRest extends javax.swing.JFrame {
     public SelectRest() {
 
         initComponents();
-        
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     /*customer cust1 = new customer("C001","Leong ","950330-14-2569","017-6762311","leong@gmail.com","123,Jalan GK ,53300 KL");
     customer cust2 = new customer("C002","AAA ","951221-14-7889","012-3456789","AAA@gmail.com","123,Jalan K ,53300 KL");
     customer cust3 = new customer("C003","BBB ","020330-14-1234","019-8765432","BBB@gmail.com","3-2, blok b, Taman LOL, 53300 KL");
@@ -37,9 +37,8 @@ public class SelectRest extends javax.swing.JFrame {
           for(int i=0;i<text.length;i++){
               text[i] = RegisterRestaurant.list.getEntry(i+1).getResName();
           }*/
-        System.out.println("size : " + RegisterRestaurant.list.getNumberOfEntries());
-        for(int i=0;i<RegisterRestaurant.list.getNumberOfEntries();i++){
-            dcb.addElement(RegisterRestaurant.list.getEntry(i+1).getResName());
+        for(int i=0;i<HomePage.listR.getNumberOfEntries();i++){
+            dcb.addElement(HomePage.listR.getEntry(i+1).getResName());
         }
          jComboBox1.setModel(dcb);
         

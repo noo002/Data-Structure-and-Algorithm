@@ -35,6 +35,7 @@ public class searchCust extends javax.swing.JFrame {
 
    public searchCust() {
        initComponents();
+       setDefaultCloseOperation(DISPOSE_ON_CLOSE);
    }
 
     /**

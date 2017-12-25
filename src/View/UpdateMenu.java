@@ -229,10 +229,18 @@ public class UpdateMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         //get the values from the textboxes
         int rowClicked = jTable1.getSelectedRow();
-        String newName = jtfName.getText();
-        double newPrice = Double.parseDouble(jtfPrice.getText());
+        String newName = jtfName.getText(); 
         String newCategory = jtfCategory.getText();
         String newDescription = jtfDescription.getText();
+        
+        if(rowClicked == -1){
+            JOptionPane.showMessageDialog(null,"Please select a menu from the table");
+        }
+       if(newName.equals("") || jtfPrice.getText().equals("") || newCategory.equals("") || newDescription.equals("")){
+            JOptionPane.showMessageDialog(null,"Please fill in the required details");
+        }
+          else{
+            double newPrice = Double.parseDouble(jtfPrice.getText());
         //set it to model
         food food = new food();
         menu me = new menu();
@@ -251,21 +259,12 @@ public class UpdateMenu extends javax.swing.JFrame {
         model.removeRow(i);
     }
     //show successful message and refresh data into jtable
-    JOptionPane.showMessageDialog(null,"Successfully updated !");
+    JOptionPane.showMessageDialog(null,"Successfully updated menu items for "+ newName);
     addDataToJTable();
+    //make the jtable selectedRow is the one edited
+    jTable1.setRowSelectionInterval(rowClicked,rowClicked);
+       }
 }
-        /*int rowClicked = jTable1.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        if(rowClicked >=0){
-            //get data from jtextfield and update it into the jtable
-            model.setValueAt(jtfName.getText(),rowClicked,0);
-            model.setValueAt(jtfPrice.getText(),rowClicked,1);
-            model.setValueAt(jtfCategory.getText(),rowClicked,2);
-            model.setValueAt(jtfDescription.getText(),rowClicked,3);
-            JOptionPane.showMessageDialog(null,"Successfully updated !");
-        }else{
-           JOptionPane.showMessageDialog(null,"Please select a row in the table");
-        }*/
     }//GEN-LAST:event_jbtUpdateActionPerformed
 
     private void jbtBackHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBackHomeActionPerformed

@@ -18,7 +18,7 @@ import Model.food;
  * @author Wei Kit
  */
 public class RegisterRestaurant extends javax.swing.JFrame {
-    public static ListInterfaceR<Restaurant> list = new LListR<>();
+    //public static ListInterfaceR<Restaurant> listR = new LListR<>();
     boolean checkRes = true;
     /**
      * Creates new form RegisterRestaurant
@@ -250,7 +250,7 @@ public class RegisterRestaurant extends javax.swing.JFrame {
        String password = jpfPass.getPassword().toString();
        String area = jcbArea.getSelectedItem().toString();
         Restaurant res = new Restaurant(resName,resAdd,ownerName,ownerEmail,ownerContactNum,resContactNum,password,area);
-        list.add(res);
+        HomePage.listR.add(res);
         ExistingRestaurant.name = resName;
         JOptionPane.showMessageDialog(null,"You have successfully registered your restaurant as affiliate of Fastest Deliveryman","Register Successful",JOptionPane.INFORMATION_MESSAGE);
         dispose();
@@ -333,11 +333,10 @@ public class RegisterRestaurant extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public boolean checkResName(String resName) {
-        for(int i=0;i<list.getNumberOfEntries();i++){
-            if(resName.equals(list.getEntry(i+1).getResName())){
+        for(int i=0;i<HomePage.listR.getNumberOfEntries();i++){
+            if(resName.equals(HomePage.listR.getEntry(i+1).getResName())){
                 
                  checkRes = false;
-                 System.out.println("Res name : "+ checkRes);
                  break;
             }
             else{

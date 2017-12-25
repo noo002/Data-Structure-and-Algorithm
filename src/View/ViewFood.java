@@ -172,7 +172,7 @@ public class ViewFood extends javax.swing.JFrame {
         new RestaurantHome().setVisible(true);
     }//GEN-LAST:event_jbtBackHomeActionPerformed
 public  void populateTable(){
-   
+
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     Object rowData[] = new Object[4];
 

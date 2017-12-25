@@ -8,6 +8,7 @@ package View;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Model.MenuItem;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -23,6 +24,7 @@ public class RemoveMenuItem extends javax.swing.JFrame {
         setTitle("Remove Menu Item");
         setLocationRelativeTo(null);
         getDataIntoJTable();
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 

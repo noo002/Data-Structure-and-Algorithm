@@ -1,16 +1,20 @@
 
 package View;
 
+import Control.LListR;
+import Control.ListInterfaceR;
 import Control.myList;
 import Control.myListInterface;
 import Model.AddDeliveryManDa;
 import Model.HRExecutive;
+import Model.Restaurant;
 import Model.deliveryMan;
 
 public class HomePage extends javax.swing.JFrame {
 
   public static myListInterface<deliveryMan> d = new myList<>();
    public static myListInterface<HRExecutive> HRData = new myList<>();
+   public static ListInterfaceR<Restaurant> listR = new LListR<>();
     public HomePage() {
         initComponents();
         initiaDetail();
@@ -181,9 +185,9 @@ public class HomePage extends javax.swing.JFrame {
         private void initiaDetail() {
         setLocationRelativeTo(null);
         setTitle("Home Page");
-        AddDeliveryManDa da = new AddDeliveryManDa();
-        d = da.getDeliveryMan();
-        da.shutDown();
+//        AddDeliveryManDa da = new AddDeliveryManDa();
+//        d = da.getDeliveryMan();
+//        da.shutDown();
         HRExecutive data = new HRExecutive("HR00001", "123123", "eugence966@hotmail.com");
         HRExecutive data2 = new HRExecutive("HR00002", "123123", "eugence966@hotmail.com");
         HRExecutive data3 = new HRExecutive("HR00003", "123123", "eugence966@hotmail.com");

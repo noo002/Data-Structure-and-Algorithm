@@ -123,15 +123,32 @@ public class ExistingRestaurant extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtLoginActionPerformed
-        /* Login but do not know how to do */
-        
-        name = jtfResName.getText();
-        String password = String.valueOf(jpfPass.getPassword());
-        boolean loginTrue = false;
-        for(int i =0;i<RegisterRestaurant.list.getNumberOfEntries();i++){
-             if(name.equals(RegisterRestaurant.list.getEntry(i+1).getResName())){
-                 if(password.equals(RegisterRestaurant.list.getEntry(i+1).getPassword())){
-                     //hard code some data to the menu
+        /* Login but do not know how to do */;
+         boolean checkUserName = checkUserName();
+        boolean checkPassword = checkPassword();
+        if(checkUserName&&checkPassword){
+            JOptionPane.showMessageDialog(this, "Please Enter your Username and Password");
+            jtfResName.requestFocus();
+        }
+        else if(checkUserName){
+            JOptionPane.showMessageDialog(this, "Please Enter your Usernae");
+            jtfResName.requestFocus();
+        }
+        else if(checkPassword){
+            JOptionPane.showMessageDialog(this, "Enter your Password");
+            jpfPass.requestFocus();
+        }
+        else{
+            
+            boolean checkIdentification = checkIndentification();
+            if(checkIdentification){
+                new RestaurantHome().setVisible(true);
+                dispose();
+            }
+            else
+                JOptionPane.showMessageDialog(this, "Incorrect password or username");
+        }
+                     /*//hard code some data to the menu
                 // MenuItem menu = new MenuItem("Chicken Chop",12.0,"Chicken","Fresh and delicious",name);
                  food food = new food();
                  menu menu = new menu();
@@ -143,7 +160,7 @@ public class ExistingRestaurant extends javax.swing.JFrame {
                  RestaurantHome.stackMenu.push(menu);
                  RestaurantHome.stackFood.push(food);
                  // after successful verification then display message and go to next page
-                 JOptionPane.showMessageDialog(null,"Welcome to Fastest DeliveryMan, "+ RegisterRestaurant.list.getEntry(i+1).getOwnerName());
+                 JOptionPane.showMessageDialog(null,"Welcome to Fastest DeliveryMan, "+ HomePage.listR.getEntry(i+1).getOwnerName());
                  dispose();
                  new RestaurantHome().setVisible(true);
              }
@@ -153,30 +170,8 @@ public class ExistingRestaurant extends javax.swing.JFrame {
              }
              else{
                  JOptionPane.showMessageDialog(null,"Invalid username");
-             }
-}
-            /* while(loginTrue = false){
-                 int i=1;
-                  if(name.equals(RegisterRestaurant.list.getEntry(i).getResName())){
-                 if(password.equals(RegisterRestaurant.list.getEntry(i).getPassword())){
-                     
-                     //hard code some data to the menu
-                 MenuItem menu = new MenuItem("Chicken Chop",12.0,"Chicken","Fresh and delicious",name);
-                 RestaurantHome.stack.push(menu);
-                 // after successful verification then display message and go to next page
-                 JOptionPane.showMessageDialog(null,"Welcome to Fastest DeliveryMan, "+ RegisterRestaurant.list.getEntry(i+1).getOwnerName());
-                 loginTrue = true;
-                  dispose();
-                 new RestaurantHome().setVisible(true);
-             }
-                 else{
-                     JOptionPane.showMessageDialog(null,"Invalid password");
-                 }
-             }
-             else{
-                 JOptionPane.showMessageDialog(null,"Invalid restaurant name");
-             }
              }*/
+          
     }//GEN-LAST:event_jbtLoginActionPerformed
 
     private void jbtResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtResetActionPerformed
@@ -232,12 +227,42 @@ public class ExistingRestaurant extends javax.swing.JFrame {
 
     private void initializeRestaurantDetails() {
         //if didn't register then add a data first
-        if(RegisterRestaurant.list.getNumberOfEntries() == 0){
+        if(HomePage.listR.getNumberOfEntries() == 0){
         Restaurant res = new Restaurant("Professional Restaurant","Taman Bagan","Ah Beng","good@gmail.com",0161234567,04234123,"abcd1234","Wangsa Maju");
         //Restaurant res1 = new Restaurant("Delicious Restaurant","Taman Bant","Ah Kang","fgtr@gmail.com",0161234512,04234324);
-        RegisterRestaurant.list.add(res);
+        HomePage.listR.add(res);
         }
        // list.add(res1);
         
+    }
+    private boolean checkUserName() {
+       boolean result = false;
+       if(jtfResName.getText().equals("")){
+          result = true; 
+       } 
+       return result;
+    }
+
+    private boolean checkPassword() {
+       boolean result = false;
+       String password = new String(jpfPass.getPassword());
+       if(password.equals("")){
+           result = true;
+       }
+       return result;
+    }
+
+    private boolean checkIndentification() {
+        boolean result = false;
+        String userName = jtfResName.getText();
+        String password = new String(jpfPass.getPassword());
+        
+         for(int i=0;i<HomePage.listR.getNumberOfEntries();i++){
+               if(userName.equals(HomePage.listR.getEntry(i+1).getResName())&&password.equals(HomePage.listR.getEntry(i+1).getPassword())){
+                   result = true;
+                   break;
+               }
+           }
+         return result;
     }
 }

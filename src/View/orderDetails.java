@@ -30,7 +30,7 @@ public class orderDetails extends javax.swing.JFrame {
        
          
         initComponents();
-        
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
        
     
     

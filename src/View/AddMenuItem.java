@@ -249,9 +249,13 @@ public class AddMenuItem extends javax.swing.JFrame {
     private void jbtAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAddActionPerformed
         //retrieve items from GUI
          name = jtfName.getText();
-         price = Double.parseDouble(jtfPrice.getText());
          category = jcbCategory.getSelectedItem().toString();
         description = jtaDescription.getText();
+        if(name.equals("") || category.equals("") || description.equals("") || jtfPrice.getText().equals("")){
+             JOptionPane.showMessageDialog(null,"Please fill in the required details");
+        }
+        else{
+        price = Double.parseDouble(jtfPrice.getText());
         menu me = new menu(); 
         me.setCategory(category);
         food food = new food();
@@ -262,7 +266,7 @@ public class AddMenuItem extends javax.swing.JFrame {
         listMenu.add(me);
         listFood.add(food);
         addRowToJTable();
-
+        }
     }//GEN-LAST:event_jbtAddActionPerformed
 
     private void jbtResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtResetActionPerformed
@@ -314,6 +318,12 @@ public class AddMenuItem extends javax.swing.JFrame {
          }
          //show how many menu items added
        JOptionPane.showMessageDialog(null,"You added "+ model.getRowCount()+ " menu items");
+        //remove or refresh all the data of the jtable
+       if (model.getRowCount() > 0) {
+    for (int i = model.getRowCount() - 1; i > -1; i--) {
+        model.removeRow(i);
+    }
+       }
     }//GEN-LAST:event_jbtConfirmActionPerformed
 
     private void jbtHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtHomeActionPerformed
