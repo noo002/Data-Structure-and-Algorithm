@@ -33,7 +33,8 @@ public class PlaceOrder extends javax.swing.JFrame {
         
         
         //set id 
-       jTextField1.setText("O" + LinkedQueue.lastOrderId);
+        //jTextField1.setText("O" + LinkedQueue.lastOrderId);
+       jTextField1.setText(String.format("O%05d", LinkedQueue.lastOrderId));
         jTextField1.setEditable(false);
           DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd ");
         //get current date time with Date()

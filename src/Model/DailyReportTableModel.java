@@ -5,6 +5,7 @@
  */
 package Model;
 
+import View.HomePage;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -13,11 +14,21 @@ import javax.swing.table.AbstractTableModel;
  */
 public class DailyReportTableModel extends AbstractTableModel{
     
-    String[] header ={"No","Delivery Man", "Total Deliveries Completed","Distance Travelled"};
+    String[] header ={"No","Name", "Total Deliveries Completed","Distance Travelled"};
+    
+    String[][] fixedText = {{"1","Wee Kian Huat","5","20"},
+        {"2","AHuat White Coffee","3","15"},
+       };
+    
+    
+    public DailyReportTableModel(){
+    
+        
+}
 
     @Override
     public int getRowCount() {
-       return 0;
+       return fixedText.length;
     }
     
     
@@ -34,7 +45,22 @@ public class DailyReportTableModel extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Object obj = null;
+        switch(columnIndex){
+            case 0 :
+                obj = fixedText[rowIndex][columnIndex];
+                break;
+            case 1 :
+                obj = fixedText[rowIndex][columnIndex];
+                break;
+            case 2 :
+                obj = fixedText[rowIndex][columnIndex];
+                break;
+            case 3 :
+                obj = fixedText[rowIndex][columnIndex];
+        }
+        
+        return obj;
     }
     
 }

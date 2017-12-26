@@ -141,8 +141,9 @@ public class SelectRest extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      selectedResName =(String)jComboBox1.getSelectedItem();
+     String customerId = txt1.getText();
      dispose();
-     new CDisplayResMenu().setVisible(true);
+     new CDisplayResMenu(customerId).setVisible(true);
          /*if((String)jComboBox1.getSelectedItem()=="LOL Western Food"){
              
              NewJFrame west = new NewJFrame();
