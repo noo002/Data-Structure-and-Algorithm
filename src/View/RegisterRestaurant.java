@@ -247,11 +247,11 @@ public class RegisterRestaurant extends javax.swing.JFrame {
         int resContactNum = Integer.parseInt(jtfResContactNum.getText());
         int ownerContactNum = Integer.parseInt(jtfOwnerContact.getText());
         String ownerEmail = jtfOwnerEmail.getText();
-       String password = jpfPass.getPassword().toString();
+       String password = new String(jpfPass.getPassword());
        String area = jcbArea.getSelectedItem().toString();
         Restaurant res = new Restaurant(resName,resAdd,ownerName,ownerEmail,ownerContactNum,resContactNum,password,area);
         HomePage.listR.add(res);
-        ExistingRestaurant.name = resName;
+        RestaurantHome.name = resName;
         JOptionPane.showMessageDialog(null,"You have successfully registered your restaurant as affiliate of Fastest Deliveryman","Register Successful",JOptionPane.INFORMATION_MESSAGE);
         dispose();
         new RestaurantHome().setVisible(true);

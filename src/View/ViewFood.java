@@ -178,11 +178,13 @@ public  void populateTable(){
 
         // display all the data menu from stack
         for(int i=1;i<=RestaurantHome.stackFood.getNumberOfEntries();i++){
+            if(RestaurantHome.stackFood.displayStack(i).getResName().equals(RestaurantHome.name)){
             rowData[0] = RestaurantHome.stackFood.displayStack(i).getFoodName();
             rowData[1] = RestaurantHome.stackFood.displayStack(i).getPrice();
             rowData[2] = RestaurantHome.stackMenu.displayStack(i).getCategory();
             rowData[3] = RestaurantHome.stackFood.displayStack(i).getDescription();
             model.addRow(rowData);
+            }
         }
         
     }

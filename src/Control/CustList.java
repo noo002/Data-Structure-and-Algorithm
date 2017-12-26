@@ -222,7 +222,8 @@ public class CustList<T> implements CustInterface<T> {
     return null;
     }
 
-   
+  
+
     
 
   private class Node {

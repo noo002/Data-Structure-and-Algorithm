@@ -202,12 +202,15 @@ public class RemoveMenuItem extends javax.swing.JFrame {
         //this function display all data from linked stack to jtable
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Object rowData[] = new Object[4];
+        
         for(int i=1;i<=RestaurantHome.stackFood.getNumberOfEntries();i++){
+            if(RestaurantHome.stackFood.displayStack(i).getResName().equals(RestaurantHome.name)){
             rowData[0] = RestaurantHome.stackFood.displayStack(i).getFoodName();
             rowData[1] = RestaurantHome.stackFood.displayStack(i).getPrice();
             rowData[2] = RestaurantHome.stackMenu.displayStack(i).getCategory();
             rowData[3] = RestaurantHome.stackFood.displayStack(i).getDescription();
             model.addRow(rowData);
+        }
         }
     }
 }

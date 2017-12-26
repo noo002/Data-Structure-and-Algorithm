@@ -18,7 +18,7 @@ public class UserSelection extends javax.swing.JFrame {
         initComponents();
         setTitle("Restaurant Owner");
         setLocationRelativeTo(null);
-        
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**

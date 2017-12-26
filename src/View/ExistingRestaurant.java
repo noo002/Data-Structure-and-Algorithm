@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Wei Kit
  */
 public class ExistingRestaurant extends javax.swing.JFrame {
-    public static String name;
+    
     public ExistingRestaurant() {
         initComponents();
         setLocationRelativeTo(null);
@@ -123,7 +123,7 @@ public class ExistingRestaurant extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtLoginActionPerformed
-        /* Login but do not know how to do */;
+       
          boolean checkUserName = checkUserName();
         boolean checkPassword = checkPassword();
         if(checkUserName&&checkPassword){
@@ -131,7 +131,7 @@ public class ExistingRestaurant extends javax.swing.JFrame {
             jtfResName.requestFocus();
         }
         else if(checkUserName){
-            JOptionPane.showMessageDialog(this, "Please Enter your Usernae");
+            JOptionPane.showMessageDialog(this, "Please Enter your Username");
             jtfResName.requestFocus();
         }
         else if(checkPassword){
@@ -140,8 +140,10 @@ public class ExistingRestaurant extends javax.swing.JFrame {
         }
         else{
             
-            boolean checkIdentification = checkIndentification();
-            if(checkIdentification){
+            boolean checkValidation = checkValidation();
+            if(checkValidation){
+                String resName = jtfResName.getText();
+                RestaurantHome.name = resName;
                 new RestaurantHome().setVisible(true);
                 dispose();
             }
@@ -229,7 +231,7 @@ public class ExistingRestaurant extends javax.swing.JFrame {
         //if didn't register then add a data first
         if(HomePage.listR.getNumberOfEntries() == 0){
         Restaurant res = new Restaurant("Professional Restaurant","Taman Bagan","Ah Beng","good@gmail.com",0161234567,04234123,"abcd1234","Wangsa Maju");
-        name = "Professional Restaurant";
+        RestaurantHome.name = "Professional Restaurant";
         //Restaurant res1 = new Restaurant("Delicious Restaurant","Taman Bant","Ah Kang","fgtr@gmail.com",0161234512,04234324);
         HomePage.listR.add(res);
         }
@@ -253,7 +255,7 @@ public class ExistingRestaurant extends javax.swing.JFrame {
        return result;
     }
 
-    private boolean checkIndentification() {
+    private boolean checkValidation() {
         boolean result = false;
         String userName = jtfResName.getText();
         String password = new String(jpfPass.getPassword());
