@@ -1,6 +1,8 @@
 package View;
 
 
+import Control.CustInterface;
+import Control.CustList;
 import Model.customer;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -18,18 +20,21 @@ import javax.swing.JOptionPane;
  * @author gan
  */
 public class SelectRest extends javax.swing.JFrame {
-    
-    
-    public static String selectedResName;
-   
-    public SelectRest() {
 
+
+    public static String selectedResName;
+    CustInterface<customer> list = new CustList();
+    
+
+    public SelectRest( ) {
+        
         initComponents();
+        
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     /*customer cust1 = new customer("C001","Leong ","950330-14-2569","017-6762311","leong@gmail.com","123,Jalan GK ,53300 KL");
     customer cust2 = new customer("C002","AAA ","951221-14-7889","012-3456789","AAA@gmail.com","123,Jalan K ,53300 KL");
     customer cust3 = new customer("C003","BBB ","020330-14-1234","019-8765432","BBB@gmail.com","3-2, blok b, Taman LOL, 53300 KL");
-    customer.add(cust1); 
+    customer.add(cust1);
     customer.add(cust2);
     customer.add(cust3);*/
     DefaultComboBoxModel dcb = new DefaultComboBoxModel();
@@ -41,18 +46,32 @@ public class SelectRest extends javax.swing.JFrame {
             dcb.addElement(HomePage.listR.getEntry(i+1).getResName());
         }
          jComboBox1.setModel(dcb);
-        
-    }
-        
-       
-     
-     
-         
-     
-    
-    
 
+    }
+
+   
     
+ private boolean checkIndentification() {
+        boolean result = false;
+        String userName = txt1.getText();
+        
+        
+         for(int i=0;i<Home.list.getNumberOfEntries();i++){
+               if(userName.equals(Home.list.getEntry(i+1).getCustomerId())){
+                   result = true;
+                   break;
+               }
+           }
+         return result;
+    }
+
+
+
+
+
+
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -142,46 +161,65 @@ public class SelectRest extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      selectedResName =(String)jComboBox1.getSelectedItem();
      String customerId = txt1.getText();
-     dispose();
-     new CDisplayResMenu(customerId).setVisible(true);
+     
+     
+     if(txt1.getText().equals(null)){
+         JOptionPane.showMessageDialog(this, "Please Enter your Customer ID");
+         
+     }
+     
+     else{
+         
+     
+          boolean checkIdentification = checkIndentification();
+            if(checkIdentification){
+               new CDisplayResMenu(customerId).setVisible(true);
+
+                     dispose();
+     }
+        
+    }  
+     
+               
+     
          /*if((String)jComboBox1.getSelectedItem()=="LOL Western Food"){
-             
+
              NewJFrame west = new NewJFrame();
-            
+
              if(txt1.getText().isEmpty() ){
              JOptionPane.showMessageDialog(this, "Enter your customer ID !!! ");
              west.setVisible(false);
-            
+
         }
              else{
-                 west.jTextField1.setText(this.txt1.getText()); 
+                 west.jTextField1.setText(this.txt1.getText());
                 west.setVisible(true);
              }
          }
-         
+
          else if((String)jComboBox1.getSelectedItem()=="123 Restaurant"){
-            rest123 rest = new rest123(); 
+            rest123 rest = new rest123();
              if(txt1.getText().isEmpty() ){
              JOptionPane.showMessageDialog(this, "Enter your customer ID !!! ");
              rest.setVisible(false);
-            
+
         }
-            
+
            else  {
                rest.jTextField1.setText(this.txt1.getText());
-             rest.setVisible(true); 
+             rest.setVisible(true);
              }
          }
-         
+
          else if((String)jComboBox1.getSelectedItem()=="MID Fast Food"){
              MIDFastfood mid = new MIDFastfood();
              if(txt1.getText().isEmpty() ){
              JOptionPane.showMessageDialog(this, "Enter your customer ID !!! ");
              mid.setVisible(false);
-            
+
         }
-          else  { 
-                 
+          else  {
+
              mid.jTextField1.setText(this.txt1.getText());
              mid.setVisible(true);
              }
@@ -189,7 +227,7 @@ public class SelectRest extends javax.swing.JFrame {
          else
              JOptionPane.showMessageDialog(this, "You Must Select A restaurant and customer ID !!! ");
         */
-            
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -201,8 +239,8 @@ public class SelectRest extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        
+
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
