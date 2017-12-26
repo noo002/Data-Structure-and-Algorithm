@@ -8,6 +8,7 @@ package View;
 import Model.DailyReportTableModel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javafx.scene.control.SelectionMode;
 
 /**
  *
@@ -130,7 +131,7 @@ public class DailyReport extends javax.swing.JFrame {
 
     private void initiateState() {
         setLocationRelativeTo(null);
-        
+        jTable1.setSelectionMode(0);
         setDate();
     }
 

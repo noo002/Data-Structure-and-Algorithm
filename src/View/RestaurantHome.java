@@ -138,7 +138,6 @@ public class RestaurantHome extends javax.swing.JFrame {
 
     private void jbtBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBackActionPerformed
          dispose();
-         new HomePage().setVisible(true);
     }//GEN-LAST:event_jbtBackActionPerformed
 
     /**

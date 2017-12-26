@@ -229,6 +229,7 @@ public class ExistingRestaurant extends javax.swing.JFrame {
         //if didn't register then add a data first
         if(HomePage.listR.getNumberOfEntries() == 0){
         Restaurant res = new Restaurant("Professional Restaurant","Taman Bagan","Ah Beng","good@gmail.com",0161234567,04234123,"abcd1234","Wangsa Maju");
+        name = "Professional Restaurant";
         //Restaurant res1 = new Restaurant("Delicious Restaurant","Taman Bant","Ah Kang","fgtr@gmail.com",0161234512,04234324);
         HomePage.listR.add(res);
         }

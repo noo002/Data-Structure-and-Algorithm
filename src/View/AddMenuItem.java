@@ -305,6 +305,7 @@ public class AddMenuItem extends javax.swing.JFrame {
              String category = (String) jTable1.getModel().getValueAt(i,2);
              String description = (String) jTable1.getModel().getValueAt(i,3);
              // add to model
+             //ExistingRestaurant.name = name;
              menu me = new menu(); 
             me.setCategory(category);
             food food = new food();

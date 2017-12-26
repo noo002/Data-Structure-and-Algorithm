@@ -81,6 +81,7 @@ public class ClockInOutGUI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("- ClockIn / Clock Out Screen -");
 
+        textArea1.setEditable(false);
         textArea1.setColumns(20);
         textArea1.setRows(5);
         jScrollPane2.setViewportView(textArea1);

@@ -25,8 +25,8 @@ public class RegisterCust extends javax.swing.JFrame {
         
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
-        jTextField1.setText("C" + list.lastCustID());
+        //jTextField1.setText("C" + list.lastCustID());
+        jTextField1.setText(String.format("C%04d",  list.lastCustID()));
         jTextField1.setEditable(false);
     }
 

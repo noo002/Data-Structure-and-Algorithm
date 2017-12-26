@@ -28,41 +28,41 @@ import javax.swing.JFrame;
  */
 public class MainMenuGUI extends javax.swing.JFrame {
 
-    private String DeliveryManID;
-    private Deliveryman_1[] dmList;
-    Deliveryman_1[] d1 = new Deliveryman_1[10];
+    private String DeliverymanID;
+    private Deliveryman_1[] deliverymanList;
+    Deliveryman_1[] d1 = new Deliveryman_1[100];
     Order_1[] Order = new Order_1[10];
-    DeliverymanListInterface<String> deliveryManNode;
-    AssignJobListInterface<String> jobNode;
-    JobsListInterface<String> jobList;
-    DeliverymanListInterface<String> manageDeliveryMan = new DeliverymanList<>();
+    DeliverymanListInterface<String> dmanNode;
+    AssignJobListInterface<String> jNode;
+    JobsListInterface<String> jList;
+    DeliverymanListInterface<String> clockinoutMan = new DeliverymanList<>();
  
     public MainMenuGUI() {
         initComponents();
     }
     
-    public JobsListInterface<String> getJobList() {
-        return jobList;
+    public JobsListInterface<String> getJList() {
+        return jList;
     }
 
-    public void setJobList(JobsListInterface<String> jobList) {
-        this.jobList = jobList;
+    public void setJobList(JobsListInterface<String> jList) {
+        this.jList = jList;
     }
     
-    public void setDeliveryManID(String DeliveryManID){
-         this.DeliveryManID = DeliveryManID;
+    public void setDeliverymanID(String DeliverymanID){
+         this.DeliverymanID = DeliverymanID;
     }
     
-    public String getDeliveryManID(){
-        return this.DeliveryManID;
+    public String getDeliverymanID(){
+        return this.DeliverymanID;
     }
     
-    public Deliveryman_1[] getDmList() {
-        return dmList;
+    public Deliveryman_1[] getDeliverymanList() {
+        return deliverymanList;
     }
 
     public void setDmList(Deliveryman_1[] dmList) {
-        this.dmList = dmList;
+        this.deliverymanList = dmList;
     }
     
     public Order_1[] getOrder() {
@@ -70,7 +70,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
     }
 
     public AssignJobListInterface<String> getJobNode() {
-        return jobNode;
+        return jNode;
     }
 
     public void setOrder(Order_1[] Order) {
@@ -78,7 +78,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
     }
 
     public void setJobNode(AssignJobListInterface<String> jobNode) {
-        this.jobNode = jobNode;
+        this.jNode = jobNode;
     }
    
     public void setdMan(Deliveryman_1[] dMan){
@@ -89,12 +89,12 @@ public class MainMenuGUI extends javax.swing.JFrame {
         return this.d1;
     }
     
-    public DeliverymanListInterface<String> getNode(){
-        return this.deliveryManNode;
+    public DeliverymanListInterface<String> getALLNode(){
+        return this.dmanNode;
     }  
     
-    public void setNode(DeliverymanListInterface<String> dManNode ){
-        this.deliveryManNode= dManNode;
+    public void setNode(DeliverymanListInterface<String> dmanNode ){
+        this.dmanNode= dmanNode;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -188,7 +188,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
                 }else{                   
                     ClockInOutGUI cGUI = new ClockInOutGUI();
                     cGUI.setDmList(deliverymanList);
-                    cGUI.setNode(getNode());
+                    cGUI.setNode(getALLNode());
                     cGUI.setVisible(true);
                     cGUI.setSize (500, 500);
                     cGUI.setLocation (200, 100);
@@ -198,7 +198,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
 
     private void assignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignButtonActionPerformed
 
-        DeliverymanListInterface<String> deliverymanInList = getNode();
+        DeliverymanListInterface<String> deliverymanInList = getALLNode();
             
         if(getJobNode() == null && getOrder()[0] == null){
             try{
@@ -226,10 +226,10 @@ public class MainMenuGUI extends javax.swing.JFrame {
        DeliverymanStatusGUI dsGUI = new DeliverymanStatusGUI();
        dsGUI.setMenu(m1);
        dsGUI.setDeliveryMan(getdMan());
-       dsGUI.setDeliveryManNode(getNode());
+       dsGUI.setDeliveryManNode(getALLNode());
        dsGUI.setOrder(getOrder());
        dsGUI.setJobNode(getJobNode());
-       dsGUI.setJobList(getJobList());
+       dsGUI.setJobList(getJList());
        dsGUI.setVisible(true);
        dsGUI.setSize (500, 500);
        dsGUI.setLocation (200, 100);
@@ -242,10 +242,10 @@ public class MainMenuGUI extends javax.swing.JFrame {
         JobsListInterface<String> job = new JobsList<>();
  
         Order_1[] O1 = new Order_1[10];
-        O1[0] = new Order_1("null", "O01", "Wee Kian Huat", "F01","Setapak", null);
-        O1[1] = new Order_1("null", "O02", "Wee Kian Huat", "F02","Setapak", null);
-        O1[2] = new Order_1("null", "O03", "AHuat White Coffee", "F03","Wangsa Maju", null);
-        O1[3] = new Order_1("null", "O04", "AHuat White Coffee", "F04","Wangsa Maju", null);        
+        O1[0] = new Order_1("null", "O00001", "Wee Kian Huat", "F01","Setapak", null);
+        O1[1] = new Order_1("null", "O00002", "Wee Kian Huat", "F02","Setapak", null);
+        O1[2] = new Order_1("null", "O00003", "AHuat White Coffee", "F03","Wangsa Maju", null);
+        O1[3] = new Order_1("null", "O00004", "AHuat White Coffee", "F04","Wangsa Maju", null);        
         setOrder(O1);
         
         int totalOrder = getReturnOrder();
@@ -321,7 +321,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
     public void dequeue() throws ParseException{  
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
         AssignJobListInterface<String> assignJob = getJobNode();
-        JobsListInterface<String> job = getJobList();
+        JobsListInterface<String> job = getJList();
         Deliveryman_1[] deliveryMan = getdMan();
         Order_1[] o = getOrder();
         int totalOrder = getReturnOrder();

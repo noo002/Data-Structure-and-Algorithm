@@ -21,12 +21,14 @@ import javax.swing.table.TableModel;
 public class CDisplayResMenu extends javax.swing.JFrame {
     
      List<food> menuItem = new ArrayList<>();
-
+String customerId ;
     
-    public CDisplayResMenu() {
+    public CDisplayResMenu(String customerId) {
         initComponents();
+        this.customerId = customerId;
+        jtfCustomerId.setText(customerId);
        jlblResName.setText(SelectRest.selectedResName);
-        jTextField1.setEditable(false);
+        jtfCustomerId.setEditable(false);
         populateTable();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
@@ -46,7 +48,8 @@ public class CDisplayResMenu extends javax.swing.JFrame {
     for(i=0;i<RestaurantHome.stackFood.getNumberOfEntries();i++){
         rowData[0] = RestaurantHome.stackFood.displayStack(i+1).getFoodName();
         rowData[1] = RestaurantHome.stackFood.displayStack(i+1).getPrice();
-        rowData[2] = menuItem.get(i).getQuantity();
+       // rowData[2] = menuItem.get(i).getQuantity();
+       rowData[2] = 0;
         model.addRow(rowData);
     }
     }
@@ -67,7 +70,7 @@ public class CDisplayResMenu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jlblResName = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jtfCustomerId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,7 +124,7 @@ public class CDisplayResMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfCustomerId, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(jlblResName, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -141,7 +144,7 @@ public class CDisplayResMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblResName, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfCustomerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
@@ -180,7 +183,7 @@ public class CDisplayResMenu extends javax.swing.JFrame {
         
           
         }
-               pOder.jTextField5.setText(this.jTextField1.getText());
+               pOder.jTextField5.setText(this.jtfCustomerId.getText());
                pOder.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -197,7 +200,7 @@ public class CDisplayResMenu extends javax.swing.JFrame {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CDisplayResMenu().setVisible(true);
+                new CDisplayResMenu("C00001").setVisible(true);
             }
         });
     }
@@ -207,7 +210,7 @@ public class CDisplayResMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    public static javax.swing.JTextField jTextField1;
     private javax.swing.JLabel jlblResName;
+    public static javax.swing.JTextField jtfCustomerId;
     // End of variables declaration//GEN-END:variables
 }

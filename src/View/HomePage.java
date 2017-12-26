@@ -122,7 +122,7 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
 
-        new HRLogin((myList<deliveryMan>) d).setVisible(true);
+     new HRLogin((myList<deliveryMan>) d).setVisible(true);
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
@@ -185,9 +185,9 @@ public class HomePage extends javax.swing.JFrame {
         private void initiaDetail() {
         setLocationRelativeTo(null);
         setTitle("Home Page");
-//        AddDeliveryManDa da = new AddDeliveryManDa();
-//        d = da.getDeliveryMan();
-//        da.shutDown();
+        AddDeliveryManDa da = new AddDeliveryManDa();
+        d = da.getDeliveryMan();
+        da.shutDown();
         HRExecutive data = new HRExecutive("HR00001", "123123", "eugence966@hotmail.com");
         HRExecutive data2 = new HRExecutive("HR00002", "123123", "eugence966@hotmail.com");
         HRExecutive data3 = new HRExecutive("HR00003", "123123", "eugence966@hotmail.com");
