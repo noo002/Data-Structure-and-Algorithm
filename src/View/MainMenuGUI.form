@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JButton" name="jButton5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Display Deliverymen"/>
+      </Properties>
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -23,22 +30,31 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jLabel1" min="-2" pref="223" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="butClockinout" min="-2" pref="160" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="butTrack" min="-2" pref="160" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="trackButton" max="32767" attributes="0"/>
-                          <Component id="assignButton" max="32767" attributes="0"/>
-                          <Component id="clockInOutButton" max="32767" attributes="0"/>
+                          <Component id="butDisplay" pref="160" max="32767" attributes="0"/>
+                          <Component id="jButton1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="butChangeStatus" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="butAssign" min="-2" pref="160" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="223" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace pref="180" max="32767" attributes="0"/>
+              <EmptySpace pref="77" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -46,13 +62,22 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jLabel1" min="-2" pref="36" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Component id="clockInOutButton" min="-2" pref="110" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="butChangeStatus" min="-2" pref="99" max="-2" attributes="0"/>
+                  <Component id="jButton1" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="butDisplay" alignment="3" min="-2" pref="99" max="-2" attributes="0"/>
+                  <Component id="butAssign" alignment="3" min="-2" pref="99" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="assignButton" min="-2" pref="111" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="trackButton" min="-2" pref="112" max="-2" attributes="0"/>
-              <EmptySpace pref="73" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="butClockinout" alignment="3" min="-2" pref="99" max="-2" attributes="0"/>
+                  <Component id="butTrack" alignment="3" min="-2" pref="99" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -66,28 +91,52 @@
         <Property name="text" type="java.lang.String" value="- Main Menu Screen -"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="assignButton">
+    <Component class="javax.swing.JButton" name="butDisplay">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Assign Delivery Jobs (Auto)"/>
+        <Property name="text" type="java.lang.String" value="Display Deliveryman"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="assignButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butDisplayActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="trackButton">
+    <Component class="javax.swing.JButton" name="butClockinout">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Clock In / Out"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butClockinoutActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="butAssign">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Assign Delivery Jobs"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butAssignActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="butTrack">
       <Properties>
         <Property name="text" type="java.lang.String" value="Track Order"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trackButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butTrackActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="clockInOutButton">
+    <Component class="javax.swing.JButton" name="butChangeStatus">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Clock In / Clock Out"/>
+        <Property name="text" type="java.lang.String" value="Change Status"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clockInOutButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butChangeStatusActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add Deliveryman"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

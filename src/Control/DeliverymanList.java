@@ -3,128 +3,133 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control;
+package ADT;
 
 /**
  *
- * @author Wee Kian Huat
+ * @author Jing
+ * @param <T>
  */
-public class DeliverymanList<T> implements DeliverymanListInterface<T> {
+public class DeliverymanList<T extends Comparable<? super T>> implements DeliverymanADT<T> {
 
-     Node firstNode;
-     int numberOfNode;
-     
-     public T getFront(){
-         T result=null;
-         
-         result = firstNode.data;
-         
-         return result;
-     }
-     
-     public int getNumberOfNode(){
-         
-         return this.numberOfNode;
-         
-     }
-     
-    public boolean clockIn(T newEntry) {
-        
-        Node newNode = new Node(newEntry);
-        
-        if(isEmpty()==true){
-            
-            firstNode = newNode;
-            
-        }else{
-            
-            Node currentNode = firstNode;
-            while(currentNode.next != null){
-                currentNode = currentNode.next;
-            }
-            currentNode.next = newNode;
-        }
-            
-        numberOfNode++;
-        return true;
-        
-    }
-    
-    public T clockOut(int givenPosition){
-        
-       
-    T result = null;                 
-
-    if ((givenPosition >= 1) && (givenPosition <= numberOfNode)) {
-      if (givenPosition == 1) {      
-        result = firstNode.data;     
-        firstNode = firstNode.next;
-      } else {                         
-        Node nodeBefore = firstNode;
-        for (int i = 1; i < givenPosition - 1; ++i) {
-          nodeBefore = nodeBefore.next;		
-        }
-        result = nodeBefore.next.data;  
-        nodeBefore.next = nodeBefore.next.next;
-      } 																
-
-      numberOfNode--;
-    }
-
-    return result;     
-        
-    }
-    
-    public boolean isEmpty() {
-    boolean result=false;
-
-    if(this.numberOfNode ==0){
-        
-        result = true;
-    }
-    
-    return result;
-  }
+    private Node firstNode;
+    private int length;
 
     @Override
-    public int getNode(T id) {
-        
-        
-       int count=0;
-      
-       Node nodeBefore = firstNode;
-       
-       for(int i=1; i<=numberOfNode; i++){
-            T result = nodeBefore.data;
-            
-            if(result.equals(id)){
-                count = i;
-           }
-               nodeBefore = nodeBefore.next;
+    public boolean addDeliveryman(T newEntry) {
+
+        Node newNode = new Node(newEntry);
+
+        Node lastNode = null;
+        Node Node = firstNode;
+
+        while (Node != null && newEntry.compareTo(Node.data) > 0) { 
+            lastNode = Node;
+            Node = Node.next;
         }
 
-
-         
-        return count;
+       
+        if (isEmpty() || (lastNode == null)) {
+            newNode.next = firstNode;
+            firstNode = newNode;
+        } else { 
+            newNode.next = Node;
+            lastNode.next = newNode;
+        }
+        length++;
+        return true;
     }
 
-   
-    
-   private class Node {
+    @Override
+    public boolean replaceDeliveryman(int givenPosition, T newEntry) {
+        boolean successful = true;
+        Node Node;
 
-    private T data;
-    private Node next;
+        if (givenPosition >= 1 && givenPosition <= length) {
+            Node = firstNode;
+            for (int i = 0; i < givenPosition - 1; ++i) //Node to next node
+            {
+                Node = Node.next;
+            }
+            //Node is pointing to node at the givenPosition
+            Node.data = newEntry;
+        } else {
+            successful = false;
+        }
 
-    private Node(T data) {
-      this.data = data;
-      this.next = null;
+        return successful;
     }
 
-    private Node(T data, Node next) {
-      this.data = data;
-      this.next = next;
+    public T removeDeliveryman(int givenPosition) {
+        T result = null;
+        Node lastNode;
+
+        if ((givenPosition >= 1) && (givenPosition <= length)) {
+            //remove first entry
+            if (givenPosition == 1) {
+                //save entry has to remove
+                result = firstNode.data;
+                //update the firstNode to the next node
+                firstNode = firstNode.next;
+            } else {
+                lastNode = firstNode;
+                for (int i = 1; i < givenPosition - 1; ++i) {
+                    //lastNode to next node
+                    lastNode = lastNode.next;
+                }
+                //save entry has to remove
+                result = lastNode.next.data;
+                lastNode.next = lastNode.next.next;
+            }
+            length--;
+        }
+        return result;
     }
-  } 
-    
+
+    @Override
+    public boolean isEmpty() {
+        return (length == 0);
+    }
+
+    @Override
+    public int getLength() {
+        return length;
+    }
+
+    @Override
+    public T getEntry(int givenPosition) {
+      T result = null;
+
+        if ((givenPosition >= 1) && (givenPosition <= length)) {
+            //Node to the firstNode
+            Node Node = firstNode;
+            for (int i = 0; i < givenPosition - 1; ++i) {
+                //advance Node to next node
+                Node = Node.next;
+            }
+            //current is pointing to the Node at givenPosition
+            result = Node.data;
+        }
+
+        return result;   }
+
+
+
+
+    private class Node {
+
+        private T data;
+        private Node next;
+
+        private Node(T data) {
+            this.data = data;
+            this.next = null;
+        }
+
+        private Node(T data, Node next) {
+            this.data = data;
+            this.next = next;
+        }
+    }
+
 }
-

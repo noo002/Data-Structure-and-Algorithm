@@ -151,6 +151,7 @@ public class PendingDeliveries extends javax.swing.JFrame {
         setLocationRelativeTo(null);
          setDate();
          jTable1.setSelectionMode(0);
+         jtfTotalPending.setText("Total Pending Deliveries : "+HomePage.order.size());
     }
   private void setDate() {
         Date date = new Date();

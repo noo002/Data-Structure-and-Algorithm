@@ -140,8 +140,9 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
- 
-        new MainMenuGUI().setVisible(true);
+
+        new view.MainMenuGUI().setVisible(true);
+        
     }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
@@ -191,9 +192,9 @@ public class HomePage extends javax.swing.JFrame {
         setTitle("Home Page");
         AddDeliveryManDa da = new AddDeliveryManDa();
         
-       deliveryMan deliveryman = new deliveryMan("D01", "Cheong Wei Kit", "9696969696","0125457585", "Farlim", "Available", "0123456789", "1");
+        deliveryMan deliveryman = new   deliveryMan("D01", "Cheong Wei Kit", "9696969696","0125457585", "Farlim", "Available", "0123456789", "1");
         deliveryMan deliveryman2 = new deliveryMan("D02", "Heng Hui Jing", "213213321","013425152", "lorong masria", "Available", "0123456789", "1");
-        deliveryMan deliveryman3 = new deliveryMan("D03", "Lim Jing Shen", "123123123","0123456789", "KKC", "Available", "0123456789", "1");
+        deliveryMan deliveryman3 = new  deliveryMan("D03", "Lim Jing Shen", "123123123","0123456789", "KKC", "Available", "0123456789", "1");
         deliveryMan deliveryman4 = new deliveryMan("D04", "lim jing shen", "123232123","0123456789", "KLCC", "Available", "0123456789", "1");
         
         deliveryMan.add(deliveryman);

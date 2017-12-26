@@ -3,99 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package view;
 
-import Control.AssignJobList;
-import Control.DeliverymanListInterface;
-import Control.JobsListInterface;
-import Control.AssignJobListInterface;
-import Control.DeliverymanList;
-import Control.JobsList;
-import Model.Deliveryman_1;
-import Model.FoodMenu;
-import Model.Order_1;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import ADT.DeliverymanADT;
+import ADT.DeliverymanInterface;
+import ADT.DeliverymanList;
 import javax.swing.JFrame;
 
 /**
  *
- * @author Wee Kian Huat
+ * @author User
  */
 public class MainMenuGUI extends javax.swing.JFrame {
 
-    private String DeliverymanID;
-    private Deliveryman_1[] deliverymanList;
-    Deliveryman_1[] d1 = new Deliveryman_1[100];
-    Order_1[] Order = new Order_1[10];
-    DeliverymanListInterface<String> dmanNode;
-    AssignJobListInterface<String> jNode;
-    JobsListInterface<String> jList;
-    DeliverymanListInterface<String> clockinoutMan = new DeliverymanList<>();
- 
+    public static DeliverymanADT<DeliverymanInterface> dmList = new DeliverymanList<DeliverymanInterface>();
+    /**
+     * Creates new form MainMenuGUI
+     */
     public MainMenuGUI() {
         initComponents();
     }
-    
-    public JobsListInterface<String> getJList() {
-        return jList;
-    }
 
-    public void setJobList(JobsListInterface<String> jList) {
-        this.jList = jList;
-    }
-    
-    public void setDeliverymanID(String DeliverymanID){
-         this.DeliverymanID = DeliverymanID;
-    }
-    
-    public String getDeliverymanID(){
-        return this.DeliverymanID;
-    }
-    
-    public Deliveryman_1[] getDeliverymanList() {
-        return deliverymanList;
-    }
-
-    public void setDmList(Deliveryman_1[] dmList) {
-        this.deliverymanList = dmList;
-    }
-    
-    public Order_1[] getOrder() {
-        return Order;
-    }
-
-    public AssignJobListInterface<String> getJobNode() {
-        return jNode;
-    }
-
-    public void setOrder(Order_1[] Order) {
-        this.Order = Order;
-    }
-
-    public void setJobNode(AssignJobListInterface<String> jobNode) {
-        this.jNode = jobNode;
-    }
-   
-    public void setdMan(Deliveryman_1[] dMan){
-        this.d1 = dMan;
-    }
-    
-    public Deliveryman_1[] getdMan(){
-        return this.d1;
-    }
-    
-    public DeliverymanListInterface<String> getALLNode(){
-        return this.dmanNode;
-    }  
-    
-    public void setNode(DeliverymanListInterface<String> dmanNode ){
-        this.dmanNode= dmanNode;
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -105,34 +33,61 @@ public class MainMenuGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        assignButton = new javax.swing.JButton();
-        trackButton = new javax.swing.JButton();
-        clockInOutButton = new javax.swing.JButton();
+        butDisplay = new javax.swing.JButton();
+        butClockinout = new javax.swing.JButton();
+        butAssign = new javax.swing.JButton();
+        butTrack = new javax.swing.JButton();
+        butChangeStatus = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
+        jButton5.setText("Display Deliverymen");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("- Main Menu Screen -");
 
-        assignButton.setText("Assign Delivery Jobs (Auto)");
-        assignButton.addActionListener(new java.awt.event.ActionListener() {
+        butDisplay.setText("Display Deliveryman");
+        butDisplay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignButtonActionPerformed(evt);
+                butDisplayActionPerformed(evt);
             }
         });
 
-        trackButton.setText("Track Order");
-        trackButton.addActionListener(new java.awt.event.ActionListener() {
+        butClockinout.setText("Clock In / Out");
+        butClockinout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trackButtonActionPerformed(evt);
+                butClockinoutActionPerformed(evt);
             }
         });
 
-        clockInOutButton.setText("Clock In / Clock Out");
-        clockInOutButton.addActionListener(new java.awt.event.ActionListener() {
+        butAssign.setText("Assign Delivery Jobs");
+        butAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clockInOutButtonActionPerformed(evt);
+                butAssignActionPerformed(evt);
+            }
+        });
+
+        butTrack.setText("Track Order");
+        butTrack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butTrackActionPerformed(evt);
+            }
+        });
+
+        butChangeStatus.setText("Change Status");
+        butChangeStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butChangeStatusActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Add Deliveryman");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -141,281 +96,94 @@ public class MainMenuGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(trackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(assignButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(clockInOutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(butClockinout, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(butTrack, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(180, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(butDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(butChangeStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(butAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addComponent(clockInOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(butChangeStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(butDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(butAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(assignButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(trackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(butClockinout, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(butTrack, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(91, 91, 91))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void clockInOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clockInOutButtonActionPerformed
-        Deliveryman_1[] deliverymanList = getdMan();
-                    
-                if(deliverymanList[0] == null){
-                   
-                   Deliveryman_1[] d1 = new Deliveryman_1[10];
-                   d1[0] = new Deliveryman_1("D01", "Wee Kian Huat", "Setapak", "null", "null", false, "null", "null");
-                   d1[1] = new Deliveryman_1("D02", "AHuat White Coffee", "Wangsa Maju", "null", "null", false, "null", "null");
-                   
-                   ClockInOutGUI cGUI = new ClockInOutGUI();
-                   cGUI.setDmList(d1);
-                   cGUI.setVisible(true);
-                   cGUI.setSize (500, 500);
-                   cGUI.setLocation (200, 100);
-                   cGUI.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-       
-                }else{                   
-                    ClockInOutGUI cGUI = new ClockInOutGUI();
-                    cGUI.setDmList(deliverymanList);
-                    cGUI.setNode(getALLNode());
-                    cGUI.setVisible(true);
-                    cGUI.setSize (500, 500);
-                    cGUI.setLocation (200, 100);
-                    cGUI.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);                        
-                }
-    }//GEN-LAST:event_clockInOutButtonActionPerformed
+    private void butDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDisplayActionPerformed
+        DisplayDeliverymanGUI disGUI= new DisplayDeliverymanGUI();
+        disGUI.setVisible(true);
+        disGUI.setSize (500, 500);
+        disGUI.setLocation (200, 100);
+        disGUI.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_butDisplayActionPerformed
 
-    private void assignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignButtonActionPerformed
+    private void butClockinoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butClockinoutActionPerformed
+        ClockInOutGUI cGUI= new ClockInOutGUI();
+        cGUI.setVisible(true);
+        cGUI.setSize (500, 500);
+        cGUI.setLocation (200, 100);
+        cGUI.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_butClockinoutActionPerformed
 
-        DeliverymanListInterface<String> deliverymanInList = getALLNode();
-            
-        if(getJobNode() == null && getOrder()[0] == null){
-            try{
-                enqueue1();
-            }catch (ParseException ex) {
-                Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }            
-        }else{     
-            try{
-                dequeue();
-                enqueue2();
-                }catch (ParseException ex) {
-                    System.out.println(ex);
-                }     
-        }
-    }//GEN-LAST:event_assignButtonActionPerformed
-      
-    private void trackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trackButtonActionPerformed
-       FoodMenu[] m1 = new FoodMenu[10];
-       m1[0] = new FoodMenu("F01", "Pork Chop", 10.00);
-       m1[1] = new FoodMenu("F02", "Chicken Chop", 9.00);
-       m1[2] = new FoodMenu("F03", "Nasi Lemak Special", 6.50);
-       m1[3] = new FoodMenu("F04", "Maggi Goreng Special", 6.50);
-       
-       DeliverymanStatusGUI dsGUI = new DeliverymanStatusGUI();
-       dsGUI.setMenu(m1);
-       dsGUI.setDeliveryMan(getdMan());
-       dsGUI.setDeliveryManNode(getALLNode());
-       dsGUI.setOrder(getOrder());
-       dsGUI.setJobNode(getJobNode());
-       dsGUI.setJobList(getJList());
-       dsGUI.setVisible(true);
-       dsGUI.setSize (500, 500);
-       dsGUI.setLocation (200, 100);
-       dsGUI.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-    }//GEN-LAST:event_trackButtonActionPerformed
+    private void butChangeStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butChangeStatusActionPerformed
+        ChangeStatusGUI chgGUI= new ChangeStatusGUI();
+        chgGUI.setVisible(true);
+        chgGUI.setSize (500, 500);
+        chgGUI.setLocation (200, 100);
+        chgGUI.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_butChangeStatusActionPerformed
 
-    public void enqueue1() throws ParseException{
-        AssignJobListInterface<String> assignJob = new AssignJobList <>();
-        Deliveryman_1[] deliveryMan = getdMan();
-        JobsListInterface<String> job = new JobsList<>();
- 
-        Order_1[] O1 = new Order_1[10];
-        O1[0] = new Order_1("null", "O00001", "Wee Kian Huat", "F01","Setapak", null);
-        O1[1] = new Order_1("null", "O00002", "Wee Kian Huat", "F02","Setapak", null);
-        O1[2] = new Order_1("null", "O00003", "AHuat White Coffee", "F03","Wangsa Maju", null);
-        O1[3] = new Order_1("null", "O00004", "AHuat White Coffee", "F04","Wangsa Maju", null);        
-        setOrder(O1);
-        
-        int totalOrder = getReturnOrder();
-        Order_1[] pendingOrder = getOrder();
-            
-        if(deliveryMan[0]!=  null){            
-            for(int i =0; i<getReturnOrder(); i++){
-                if(pendingOrder[i].getdManID() == "null"){
-                   String a = compareBranch(pendingOrder[i].getBranch());      
-                
-                if(a != ""){
-                    Calendar c1 = Calendar.getInstance();
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-                    String currentDate = dateFormat.format(c1.getTime());
-                    Date systemDate = dateFormat.parse(currentDate);
-                    
-                    assignJob.enqueue(pendingOrder[i].getoID());
-                    job.add(pendingOrder[i].getoID());
-                    pendingOrder[i].setdManID(a);
-                    pendingOrder[i].setTime(systemDate);
-                    System.out.println("Order ID : " + pendingOrder[i].getoID() + "\n" + "Had been sucessfully assigned to " + a + " at " + pendingOrder[i].getTime() + "\n" + "Deliveryman Name: " + pendingOrder[i].getdManName());
-                    setToFalse(pendingOrder[i].dManID);
-                    }else
-                    System.out.println("Order ID : " + pendingOrder[i].getoID() + " currently haven't been assigned to any deliveryman yet. \n" + "Because the customer of branch near your location is currently NOT AVAILABLE or BUSY. \n"  );
-                
-                }
-            }
-        }
-        setJobNode(assignJob);
-        setOrder(pendingOrder);
-        setJobList(job);
-        System.out.println("\n" + "There are currently " + job.getNumberOfNode() + " jobs assigned to above deliverymen." + "\n" );
-    }
-    
-    public void enqueue2() throws ParseException{
-        AssignJobListInterface<String> assignJob = getJobNode();
-        Deliveryman_1[] deliveryMan = getdMan();
-        JobsListInterface<String> job = new JobsList<>();
-        int totalOrder = getReturnOrder();
-        Order_1[] pendingOrder = getOrder();
-            
-        if(deliveryMan[0]!=  null){
-            for(int i =0; i<getReturnOrder(); i++){
-                if(pendingOrder[i].getdManID() == "null"){
-                    if(pendingOrder[i].getoID() != "null"){
-                       System.out.println(pendingOrder[i].getoID());
-                       String a = compareBranch(pendingOrder[i].getBranch());      
-                if(a != ""){
-                    Calendar c1 = Calendar.getInstance();
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-                    String date = dateFormat.format(c1.getTime());
-                    Date dateTime = dateFormat.parse(date);
-                    
-                    assignJob.enqueue(pendingOrder[i].getoID());
-                    job.add(pendingOrder[i].getoID());
-                    pendingOrder[i].setdManID(a);
-                    pendingOrder[i].setTime(dateTime);
-                    System.out.println("\n" + pendingOrder[i].getoID() + " had been successfully assigned to " + a + " at " + pendingOrder[i].getTime() + "\n");
-                    //textArea2.setText("Order ID : " + pendingOrder[i].getoID() + " had been successfully assigned to " + a + " at " + pendingOrder[i].getTime() + "\n");
-                    setToFalse(pendingOrder[i].dManID);    
-                }else
-                    System.out.println(pendingOrder[i].getoID() + " need to wait for available deliveryman. "  );
-                    //textArea2.setText("Order ID : " + pendingOrder[i].getoID() + " need to wait for available deliveryman. \n");
-                    }
-            }   
-            }  
-     }
-       setJobNode(assignJob);
-       setOrder(pendingOrder);
-       setJobList(job);      
-    }
-    
-    public void dequeue() throws ParseException{  
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-        AssignJobListInterface<String> assignJob = getJobNode();
-        JobsListInterface<String> job = getJList();
-        Deliveryman_1[] deliveryMan = getdMan();
-        Order_1[] o = getOrder();
-        int totalOrder = getReturnOrder();
-         
-        Calendar c1 = Calendar.getInstance();
-        String currentDate = dateFormat.format(c1.getTime());
-        Date SystemDate = dateFormat.parse(currentDate);
-         
-        for(int i =0; i<totalOrder; i++){
-            if(o[i].getdManID() != "null"){      
-                if(assignJob.getFront() == o[i].getoID() ){ 
-                    Calendar c2 = Calendar.getInstance();
-                    c2.setTime(o[i].getTime());
-                    c2.add(c1.MINUTE, 10);
-                    String time = dateFormat.format(c2.getTime());
-                    Date date = dateFormat.parse(time);
-                                          
-                    if(date.after(SystemDate) ==  true){
-                        assignJob.dequeue();
-                        int result = job.getNode(o[i].getoID());
-                        job.remove(result);
-                        System.out.println(job.getNumberOfNode());
-                        setToTrue(o[i].getdManID());
-                        o[i].setoID("null");
-                    }                     
-                }                 
-            }
-    }
-        setJobNode(assignJob);
-        setOrder(o);
-        setJobList(job);    
-    }
-    
-    public void setToFalse(String id){ 
-        Deliveryman_1[] deliverymanList = getdMan();
-        for(int i=0; i<getTotalUpdatedDeliveryMan(); i++){           
-            if(id == deliverymanList[i].getID()){
-                deliverymanList[i].setStatus(false);
-                System.out.println(deliverymanList[i].getName() + " 's status now is " + deliverymanList[i].status() + "(True = Available; False = Not Available)\n" );
-                //textArea2.setText("Deliveryman Name : " + deliverymanList[i].getName() + "  Status now is " + deliverymanList[i].status() + "(True = Available; False = Not Available)\n" );
-            }
-        }
-        setdMan(deliverymanList);
-    }
-    
-    public void setToTrue(String id){
-        Deliveryman_1[] deliverymanList = getdMan();
-        for(int i=0; i<getTotalUpdatedDeliveryMan(); i++){
-            if(id == deliverymanList[i].getID()){
-                deliverymanList[i].setStatus(true);
-                System.out.println( "\n" + deliverymanList[i].getName() + " 's status now is " + deliverymanList[i].status()+ "(True = Available; False = Not Available)\n");
-                //textArea2.setText("Deliveryman Name : " + deliverymanList[i].getName() + "  Status now is " + deliverymanList[i].status() + "(True = Available; False = Not Available)\n" );
-            } 
-        }
-        setdMan(deliverymanList);
-    }
-    
-    public int getReturnOrder(){
-        int count=0;
-        Order_1[] o = getOrder();
-        for(int i=0; i<o.length;i++){
-            if(o[i]!= null){
-                count++;
-            }
-        } 
-        return count;
-    }
-    
-    public int getTotalUpdatedDeliveryMan(){
-        int count = 0;
-        Deliveryman_1[] dm = getdMan();
-        for(int i =0; i<dm.length; i++){
-            if(dm[i] != null){
-                count++;
-            }
-        }
-        return count;
-    }
-    
-    public String compareBranch(String branch1){
-        String dManID = "";
-        Deliveryman_1[] dMan = getdMan();
-        int i =0;
-        do{
-            if(branch1 == dMan[i].getBranch() && dMan[i].status() == true ){
-                dManID = dMan[i].getID();
-                dMan[i].setStatus(false);
-                this.d1 = dMan;
-                return dManID;     
-            }
-            i++;
-        }while(i <getTotalUpdatedDeliveryMan());
-        return dManID;
-    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        AddDeliverymanGUI addGUI= new AddDeliverymanGUI();
+        addGUI.setVisible(true);
+        addGUI.setSize (500, 500);
+        addGUI.setLocation (200, 100);
+        addGUI.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void butAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAssignActionPerformed
+        AssignDeliveryJobGUI assGUI= new AssignDeliveryJobGUI();
+        assGUI.setVisible(true);
+        assGUI.setSize (500, 500);
+        assGUI.setLocation (200, 100);
+        assGUI.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_butAssignActionPerformed
+
+    private void butTrackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butTrackActionPerformed
+        TrackOrderGUI tGUI= new TrackOrderGUI();
+        tGUI.setVisible(true);
+        tGUI.setSize (500, 500);
+        tGUI.setLocation (200, 100);
+        tGUI.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_butTrackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -443,20 +211,23 @@ public class MainMenuGUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainMenuGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
-        MainMenuGUI main = new MainMenuGUI ();
-        main.setVisible (true);
-        main.setSize (500, 500);
-        main.setLocation (200, 100);
-        main.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);   
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MainMenuGUI().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton assignButton;
-    private javax.swing.JButton clockInOutButton;
+    private javax.swing.JButton butAssign;
+    private javax.swing.JButton butChangeStatus;
+    private javax.swing.JButton butClockinout;
+    private javax.swing.JButton butDisplay;
+    private javax.swing.JButton butTrack;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton trackButton;
     // End of variables declaration//GEN-END:variables
 }

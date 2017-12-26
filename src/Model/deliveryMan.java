@@ -91,5 +91,4 @@ public class deliveryMan {
     public void setIcNo(String icNo) {
         this.icNo = icNo;
     }
-
 }
