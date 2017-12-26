@@ -312,7 +312,7 @@ public class AddMenuItem extends javax.swing.JFrame {
             food.setFoodName(name);
             food.setPrice(price);
             food.setDescription(description);
-            food.setResName(ExistingRestaurant.name);
+            food.setResName(RestaurantHome.name);
             //push to stack
               RestaurantHome.stackFood.push(food);
               RestaurantHome.stackMenu.push(me);

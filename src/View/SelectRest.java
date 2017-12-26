@@ -21,6 +21,7 @@ public class SelectRest extends javax.swing.JFrame {
     
     
     public static String selectedResName;
+    public static int selectedResIndex;
    
     public SelectRest() {
 
@@ -40,6 +41,7 @@ public class SelectRest extends javax.swing.JFrame {
         for(int i=0;i<HomePage.listR.getNumberOfEntries();i++){
             dcb.addElement(HomePage.listR.getEntry(i+1).getResName());
         }
+
          jComboBox1.setModel(dcb);
         
     }
@@ -141,6 +143,7 @@ public class SelectRest extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      selectedResName =(String)jComboBox1.getSelectedItem();
+     selectedResIndex = jComboBox1.getSelectedIndex();
      String customerId = txt1.getText();
      dispose();
      new CDisplayResMenu(customerId).setVisible(true);

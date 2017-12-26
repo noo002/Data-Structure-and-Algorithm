@@ -36,11 +36,13 @@ public class UpdateMenu extends javax.swing.JFrame {
 
     //insert data from stack to jtable
    for(int i=1;i<=RestaurantHome.stackFood.getNumberOfEntries();i++){
+       if(RestaurantHome.stackFood.displayStack(i).getResName().equals(RestaurantHome.name)){
             rowData[0] = RestaurantHome.stackFood.displayStack(i).getFoodName();
             rowData[1] = RestaurantHome.stackFood.displayStack(i).getPrice();
             rowData[2] = RestaurantHome.stackMenu.displayStack(i).getCategory();
             rowData[3] = RestaurantHome.stackFood.displayStack(i).getDescription();
             model.addRow(rowData);
+       }
         }
        
     }
@@ -247,7 +249,7 @@ public class UpdateMenu extends javax.swing.JFrame {
         food.setFoodName(newName);
         food.setPrice(newPrice);
         food.setDescription(newDescription);
-        food.setResName(ExistingRestaurant.name);
+        food.setResName(RestaurantHome.name);
         me.setCategory(newCategory);
         //replace it in linked stack
         RestaurantHome.stackMenu.replace(rowClicked +1, me);

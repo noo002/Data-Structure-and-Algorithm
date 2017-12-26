@@ -21,6 +21,7 @@ public class RestaurantHome extends javax.swing.JFrame {
    //public static LStackR<MenuItem> stack = new LStackR<>();
    public static StackInterfaceR<food> stackFood = new LStackR<>();
    public static StackInterfaceR<menu> stackMenu = new LStackR<>();
+   public static String name;
    //public static LListR<MenuItem> listMenu = new LListR<>();
     public RestaurantHome() {
         initComponents();

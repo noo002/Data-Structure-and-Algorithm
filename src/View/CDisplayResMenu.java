@@ -43,15 +43,20 @@ String customerId ;
     menuItem.add(menu2);
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     for(int i=0;i<RestaurantHome.stackFood.getNumberOfEntries();i++){
-    if(SelectRest.selectedResName.equals(RestaurantHome.stackFood.displayStack(i+1).getResName())){
+    //if(SelectRest.selectedResName.equals(RestaurantHome.stackFood.displayStack(i+1).getResName())){
     Object rowData[] = new Object[3];
-    for(i=0;i<RestaurantHome.stackFood.getNumberOfEntries();i++){
+    if(HomePage.listR.getEntry(SelectRest.selectedResIndex +1).getResName().equals(RestaurantHome.stackFood.displayStack(i+1).getResName())){
+         rowData[0] = RestaurantHome.stackFood.displayStack(i+1).getFoodName();
+        rowData[1] = RestaurantHome.stackFood.displayStack(i+1).getPrice();
+       rowData[2] = 0;
+        model.addRow(rowData);
+    /*for(i=0;i<RestaurantHome.stackFood.getNumberOfEntries();i++){
         rowData[0] = RestaurantHome.stackFood.displayStack(i+1).getFoodName();
         rowData[1] = RestaurantHome.stackFood.displayStack(i+1).getPrice();
        // rowData[2] = menuItem.get(i).getQuantity();
        rowData[2] = 0;
         model.addRow(rowData);
-    }
+    }*/
     }
     }
     //menuItem.clear();
