@@ -131,7 +131,7 @@ public class ExistingRestaurant extends javax.swing.JFrame {
             jtfResName.requestFocus();
         }
         else if(checkUserName){
-            JOptionPane.showMessageDialog(this, "Please Enter your Usernae");
+            JOptionPane.showMessageDialog(this, "Please Enter your Username");
             jtfResName.requestFocus();
         }
         else if(checkPassword){
@@ -140,8 +140,8 @@ public class ExistingRestaurant extends javax.swing.JFrame {
         }
         else{
             
-            boolean checkIdentification = checkIndentification();
-            if(checkIdentification){
+            boolean checkValidation = checkValidation();
+            if(checkValidation){
                 new RestaurantHome().setVisible(true);
                 dispose();
             }
@@ -252,7 +252,7 @@ public class ExistingRestaurant extends javax.swing.JFrame {
        return result;
     }
 
-    private boolean checkIndentification() {
+    private boolean checkValidation() {
         boolean result = false;
         String userName = jtfResName.getText();
         String password = new String(jpfPass.getPassword());

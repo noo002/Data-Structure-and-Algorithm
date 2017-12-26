@@ -18,7 +18,6 @@ public class LStackR<T> implements StackInterfaceR<T> {
             clear();
         }
     
-
     @Override
     public void clear() {
     firstNode = null;
@@ -42,8 +41,7 @@ public class LStackR<T> implements StackInterfaceR<T> {
 
     return isSuccessful;
     }
-    
-        
+      
          @Override
     public T displayStack(int givenPosition){
         T data = null;
@@ -55,18 +53,7 @@ public class LStackR<T> implements StackInterfaceR<T> {
             data  = currentNode.data;
         }
        return data;
-    }
-    
-   //for testing
-        /* LStack<Integer> a = new LStack();
-        a.push(1);
-        a.push(2);
-        a.push(3);
-        a.push(4);
-        for(int i=1;i<=a.getNumberOfEntries();i++){
-           System.out.println(a.displayStack(i));
-        }*/
-        
+    }      
     
     public T remove(int givenPosition) {
         T result = null;                 // return value
@@ -137,8 +124,7 @@ public class LStackR<T> implements StackInterfaceR<T> {
     public T peek() {
         return firstNode.data;
     }
-
-    
+   
     private class Node {
 
     public T data;
