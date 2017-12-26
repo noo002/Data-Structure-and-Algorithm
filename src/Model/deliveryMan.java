@@ -17,6 +17,22 @@ public class deliveryMan {
         return emergencyContactNo;
     }
 
+    public deliveryMan() {
+    }
+
+    public deliveryMan(String deliveryManId, String name, String icNo, String contactNo, String address, String status, String emergencyContactNo, String level) {
+        this.deliveryManId = deliveryManId;
+        this.name = name;
+        this.icNo = icNo;
+        this.contactNo = contactNo;
+        this.address = address;
+        this.status = status;
+        this.emergencyContactNo = emergencyContactNo;
+        this.level = level;
+    }
+    
+    
+
     public void setEmergencyContactNo(String emergencyContactNo) {
         this.emergencyContactNo = emergencyContactNo;
     }

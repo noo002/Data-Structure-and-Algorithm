@@ -190,7 +190,7 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         deliveryMan.setLevel("1");
         
         //update to linked List
-         boolean result = HomePage.d.add(deliveryMan); // mylist is using a array please change it into linked list then should be ok
+         boolean result = HomePage.deliveryMan.add(deliveryMan); // mylist is using a array please change it into linked list then should be ok
         
         //update to the showDeliveryMan table
         ShowDeliveryMan.DeliveryManTableModel.fireTableDataChanged();

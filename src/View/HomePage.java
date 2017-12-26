@@ -8,13 +8,17 @@ import Control.myListInterface;
 import Model.AddDeliveryManDa;
 import Model.HRExecutive;
 import Model.Restaurant;
+import Model.customer;
 import Model.deliveryMan;
+import Model.order;
 
 public class HomePage extends javax.swing.JFrame {
 
-  public static myListInterface<deliveryMan> d = new myList<>();
+  public static myListInterface<deliveryMan> deliveryMan = new myList<>();
    public static myListInterface<HRExecutive> HRData = new myList<>();
    public static ListInterfaceR<Restaurant> listR = new LListR<>();
+   public static myListInterface<order> order = new myList<>();
+   public static myListInterface<customer> customer = new myList<>();
     public HomePage() {
         initComponents();
         initiaDetail();
@@ -122,7 +126,7 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
 
-     new HRLogin((myList<deliveryMan>) d).setVisible(true);
+     new HRLogin((myList<deliveryMan>) deliveryMan).setVisible(true);
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
@@ -131,8 +135,8 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        Home order = new Home();
-        order.setVisible(true); 
+         new Home().setVisible(true);
+        
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -186,7 +190,18 @@ public class HomePage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Home Page");
         AddDeliveryManDa da = new AddDeliveryManDa();
-        d = da.getDeliveryMan();
+        
+       deliveryMan deliveryman = new deliveryMan("D01", "Cheong Wei Kit", "9696969696","0125457585", "Farlim", "Available", "0123456789", "1");
+        deliveryMan deliveryman2 = new deliveryMan("D02", "Heng Hui Jing", "213213321","013425152", "lorong masria", "Available", "0123456789", "1");
+        deliveryMan deliveryman3 = new deliveryMan("D03", "Lim Jing Shen", "123123123","0123456789", "KKC", "Available", "0123456789", "1");
+        deliveryMan deliveryman4 = new deliveryMan("D04", "lim jing shen", "123232123","0123456789", "KLCC", "Available", "0123456789", "1");
+        
+        deliveryMan.add(deliveryman);
+        deliveryMan.add(deliveryman2);
+        deliveryMan.add(deliveryman3);
+        deliveryMan.add(deliveryman4);
+       
+        
         da.shutDown();
         HRExecutive data = new HRExecutive("HR00001", "123123", "eugence966@hotmail.com");
         HRExecutive data2 = new HRExecutive("HR00002", "123123", "eugence966@hotmail.com");

@@ -272,7 +272,7 @@ public class DeliveryInformation extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void getInitiateDetails() {
-      man = HomePage.d.get(position);
+      man = HomePage.deliveryMan.get(position);
       setLocationRelativeTo(null);
       
       jtfAddress.setText(man.getAddress());

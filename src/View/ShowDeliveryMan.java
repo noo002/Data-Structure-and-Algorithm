@@ -244,7 +244,7 @@ public class ShowDeliveryMan extends javax.swing.JFrame {
             String name =(String) jTable2.getValueAt(rowIndex, 1);
            int result = JOptionPane.showConfirmDialog(null, "Are you sure to remove "+name+" from system?","ARE YOU SURE?",JOptionPane.OK_OPTION);
            if(result == JOptionPane.OK_OPTION){
-               HomePage.d.remove(rowIndex+1);
+               HomePage.deliveryMan.remove(rowIndex+1);
                DeliveryManTableModel.fireTableDataChanged();
            }
             
@@ -285,7 +285,20 @@ public class ShowDeliveryMan extends javax.swing.JFrame {
 
     private void jbtPendingDeliveriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtPendingDeliveriesActionPerformed
  
-        new PendingDeliveries().setVisible(true);
+        if(HomePage.customer.isEmpty() && HomePage.order.isEmpty()){
+               JOptionPane.showMessageDialog(this, "you havent create order and register as customer");
+           
+               
+        }
+        else if(HomePage.customer.isEmpty())
+            JOptionPane.showMessageDialog(this, "you haven't create as customer");
+        else if(HomePage.order.isEmpty())
+             JOptionPane.showMessageDialog(this, "you haven't create an order yet");
+        
+        else if(!HomePage.customer.isEmpty()&&!HomePage.order.isEmpty()){
+            new PendingDeliveries().setVisible(true);
+        }
+        
     }//GEN-LAST:event_jbtPendingDeliveriesActionPerformed
 
     private void jbtDailyReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtDailyReportActionPerformed

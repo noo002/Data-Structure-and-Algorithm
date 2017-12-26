@@ -26,11 +26,11 @@ public class AddDeliveryMan implements AddDeliveryManInterface{
         String newId = "";
         //AddDeliveryManDa addDeliveryManDa = new AddDeliveryManDa();
         //String oldId = addDeliveryManDa.getBiggestDeliveryManId();
-        if(HomePage.d.isEmpty()||HomePage.d.size() == 0){
+        if(HomePage.deliveryMan.isEmpty()||HomePage.deliveryMan.size() == 0){
             newId = "D01";
         }
         else{
-            String oldId = HomePage.d.get(HomePage.d.size()).getDeliveryManId();
+            String oldId = HomePage.deliveryMan.get(HomePage.deliveryMan.size()).getDeliveryManId();
             char ch = oldId.charAt(0);
             int value = Integer.parseInt(oldId.substring(1,3))+1;
             newId = String.format("%c%02d", ch,value);

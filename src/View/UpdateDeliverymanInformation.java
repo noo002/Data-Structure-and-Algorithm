@@ -201,13 +201,13 @@ public class UpdateDeliverymanInformation extends javax.swing.JFrame {
 
     private void jbtUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtUpdateActionPerformed
  
-        deliveryMan man = HomePage.d.get(position);
+        deliveryMan man = HomePage.deliveryMan.get(position);
         man.setAddress(jtfAddress.getText());
         man.setContactNo(jtfContactNo.getText());
         man.setEmergencyContactNo(jtfEmergencyContacNo.getText());
         man.setStatus(jcbStatus.getSelectedItem().toString());
 
-        boolean result = HomePage.d.replace(position, man); 
+        boolean result = HomePage.deliveryMan.replace(position, man); 
 //        DeliverymanInformationInterface man = new DeliverymanInformation();
 //        boolean result = man.updateToDatabase(d);
         if(result){
@@ -262,10 +262,10 @@ public class UpdateDeliverymanInformation extends javax.swing.JFrame {
        
       
        
-       jtfAddress.setText(HomePage.d.get(position).getAddress());
-       jtfContactNo.setText(HomePage.d.get(position).getContactNo());
-       jtfEmergencyContacNo.setText(HomePage.d.get(position).getEmergencyContactNo());
-       jtfName.setText(HomePage.d.get(position).getName());
+       jtfAddress.setText(HomePage.deliveryMan.get(position).getAddress());
+       jtfContactNo.setText(HomePage.deliveryMan.get(position).getContactNo());
+       jtfEmergencyContacNo.setText(HomePage.deliveryMan.get(position).getEmergencyContactNo());
+       jtfName.setText(HomePage.deliveryMan.get(position).getName());
        
        
     }

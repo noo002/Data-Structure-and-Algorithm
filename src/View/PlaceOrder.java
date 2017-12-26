@@ -36,7 +36,7 @@ public class PlaceOrder extends javax.swing.JFrame {
         //jTextField1.setText("O" + LinkedQueue.lastOrderId);
        jTextField1.setText(String.format("O%05d", LinkedQueue.lastOrderId));
         jTextField1.setEditable(false);
-          DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd ");
+          DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
         //get current date time with Date()
         Date date = new Date();
         jTextField3.setText(dateFormat.format(date));
@@ -299,6 +299,7 @@ public class PlaceOrder extends javax.swing.JFrame {
         
         
         order o = new order( customerId, orderId, orderDate, orderTime, totalAmount);
+        HomePage.order.add(o);
         Home.myQueue.enqueue(o);
         
         JOptionPane.showMessageDialog(null,"You have successful make your order :D ");

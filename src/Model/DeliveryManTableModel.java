@@ -28,7 +28,7 @@ public class DeliveryManTableModel extends AbstractTableModel{
     }
     @Override
     public int getRowCount() {
-      return HomePage.d.size();
+      return HomePage.deliveryMan.size();
     }
 
     @Override
@@ -44,7 +44,7 @@ public class DeliveryManTableModel extends AbstractTableModel{
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Object obj = null;
-        deliveryMan man = HomePage.d.get((rowIndex+1));
+        deliveryMan man = HomePage.deliveryMan.get((rowIndex+1));
         //  String[] columnHeader = {"Delivery Man ID","Name","Level","Status"};
         switch(columnIndex){
             case 0:

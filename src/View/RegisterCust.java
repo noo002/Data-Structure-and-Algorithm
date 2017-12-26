@@ -218,6 +218,7 @@ public class RegisterCust extends javax.swing.JFrame {
         list.IncreaseCustID();
       
         customer cust = new customer(customerId, name, ICNo, ContactNo, email, address,area);
+        HomePage.customer.add(cust);
         Home.list.add(cust); 
         
         JOptionPane.showMessageDialog(null,"You have successful registered ! ");
